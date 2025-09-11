@@ -12,7 +12,7 @@ export class CustomWorld {
 
 setWorldConstructor(CustomWorld);
 
-Before(async function () {
+Before({ timeout: 40000 }, async function () {
     // 🎭 Configuración del navegador basada en variable de entorno
     //const headless = process.env.HEADLESS === 'true' || false;
     const headless = process.env.HEADLESS !== 'false';
