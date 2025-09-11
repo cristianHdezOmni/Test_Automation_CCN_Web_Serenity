@@ -1,5 +1,6 @@
-import { BeforeAll } from '@cucumber/cucumber';
+import { AfterStep, BeforeAll } from '@cucumber/cucumber';
 import { configure } from '@serenity-js/core';
+import { TakeScreenshot } from '@serenity-js/web';
 import * as path from 'path';
 
 BeforeAll(() => {
@@ -16,4 +17,12 @@ BeforeAll(() => {
             } ],
         ],
     });
+});
+
+AfterStep(async function () {
+    if (this.actor) {
+        await this.actor.attemptsTo(
+            TakeScreenshot.of('step')
+        );
+    }
 });
