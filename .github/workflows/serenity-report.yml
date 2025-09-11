@@ -30,7 +30,7 @@ jobs:
           java-version: '17'
 
       - name: Run tests and generate Serenity JSON
-        run: npx cucumber-js --require-module ts-node/register --require src/support/world.ts --require src/StepDefinitions/**/*.ts src/Resource/features/**/*.feature --format @serenity-js/cucumber --format progress-bar
+        run: npx cucumber-js --require-module ts-node/register --require src/support/world.ts --require src/StepDefinitions/**/*.ts src/Resource/features/**/*.feature --format @serenity-js/cucumber
         continue-on-error: true
 
       - name: Generate Serenity BDD HTML report
@@ -43,7 +43,7 @@ jobs:
           path: target/site/serenity
 
       - name: Deploy Serenity Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site/serenity
