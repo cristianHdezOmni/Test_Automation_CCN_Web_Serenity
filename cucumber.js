@@ -8,7 +8,7 @@ module.exports = {
     paths: ['src/Resource/features/**/*.feature'],
      format: [
       '@serenity-js/cucumber',
-      //'summary',
+      'summary',
       //'progress-bar'     // 👈 añade salida visible en consola
     ],
     //publishQuiet: true, // 👈 evita logs innecesarios en CI/CD
