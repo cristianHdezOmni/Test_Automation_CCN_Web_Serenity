@@ -6,7 +6,10 @@ BeforeAll(() => {
     configure({
         crew: [
             [ '@serenity-js/serenity-bdd', {
-                specDirectory: path.resolve(__dirname, '../Resource/features')
+                specDirectory: path.resolve(__dirname, '../spec'),
+                reporter: {
+                    includeAbilityDetails: true,
+                },
             } ],
             [ '@serenity-js/core:ArtifactArchiver', {
                 outputDirectory: path.resolve(__dirname, '../../target/site/serenity')
