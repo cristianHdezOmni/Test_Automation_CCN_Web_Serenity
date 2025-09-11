@@ -10,12 +10,12 @@ Feature: User Registration
       | User      | QARegresion | 15/05/1990  | 12345678 | Password123!  |
     Then the user should be successfully registered
 
-  @smoke @registrationDuplicateEmail
+  @smoke @registration01
   Scenario: Registration with duplicate email
     When the user tries to register with duplicate email "carlos.perez.testQA26@omni.pro"
     Then the system should show duplicate email error
 
-  @smoke @registration
+  @smoke @registration01
   Scenario: Registration with invalid password - minimum length
     When the user tries to register with password "123"
     Then the system should show password minimum length error
