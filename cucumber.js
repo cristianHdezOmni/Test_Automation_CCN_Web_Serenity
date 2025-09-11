@@ -6,7 +6,12 @@ module.exports = {
       'src/support/**/*.ts',
     ],  
     paths: ['src/Resource/features/**/*.feature'],
-    format: ['@serenity-js/cucumber'],
+     format: [
+      '@serenity-js/cucumber',
+      'summary',
+      //'progress'     // 👈 añade salida visible en consola
+    ],
+    //publishQuiet: true, // 👈 evita logs innecesarios en CI/CD
     // Configuración de tags
     tags: process.env.TAGS || '@smoke' // Por defecto ejecuta solo @smoke
   }
