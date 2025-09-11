@@ -30,7 +30,7 @@ jobs:
           java-version: '17'
 
       - name: Run tests and generate Serenity JSON
-        run: npx cucumber-js --format progress --publish-quiet
+        run: npx cucumber-js
 
       - name: Generate Serenity BDD HTML report
         run: npx serenity-bdd run
