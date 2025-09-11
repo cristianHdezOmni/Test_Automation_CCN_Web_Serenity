@@ -1,0 +1,29 @@
+# Dependencias
+node_modules/
+npm-debug.log*
+
+# Reportes de pruebas
+reports/
+allure-results/
+test-results/
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Capturas de pantalla
+screenshots/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+dist/
+build/
