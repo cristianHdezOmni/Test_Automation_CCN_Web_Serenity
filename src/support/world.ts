@@ -14,7 +14,7 @@ setWorldConstructor(CustomWorld);
 
 Before(async function () {
     // 🎭 Configuración del navegador basada en variable de entorno
-    const headless = process.env.HEADLESS === 'true' || false;
+    const headless = process.env.HEADLESS === 'false' || false;
     const browser = await chromium.launch({
         channel: 'chrome', // 👈 esto lanza Google Chrome real
         headless: headless     // 👀 configurable según el ambiente
