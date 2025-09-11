@@ -9,7 +9,7 @@ module.exports = {
      format: [
       '@serenity-js/cucumber',
       'summary',
-      //'progress'     // 👈 añade salida visible en consola
+      'progress-bar'     // 👈 añade salida visible en consola
     ],
     //publishQuiet: true, // 👈 evita logs innecesarios en CI/CD
     // Configuración de tags

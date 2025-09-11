@@ -10,7 +10,7 @@ Feature: User Registration
       | User      | QARegresion | 15/05/1990  | 12345678 | Password123!  |
     Then the user should be successfully registered
 
-  @smoke @registration
+  @smoke @registrationDuplicateEmail
   Scenario: Registration with duplicate email
     When the user tries to register with duplicate email "carlos.perez.testQA26@omni.pro"
     Then the system should show duplicate email error

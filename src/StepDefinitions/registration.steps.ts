@@ -44,25 +44,29 @@ Then('the user should be successfully registered', { timeout: 40000 }, async fun
 
 });
 
-When('the user tries to register with duplicate email {string}', async function (this: CustomWorld, email) {
+When('the user tries to register with duplicate email {string}',{ timeout: 40000 }, async function (this: CustomWorld, email) {
   await this.actor.attemptsTo(
     RegisterUser.withData({
       firstName: 'Carlos',
       lastName: 'Perez',
       dateOfBirth: '01/01/1990',
       document: '11111111',
-      email,
+      email:email,
       password: 'Password123!'
     })
   );
 });
 
-Then('the system should show duplicate email error', async function (this: CustomWorld) {
+Then('the system should show duplicate email error', { timeout: 40000 }, async function (this: CustomWorld) {
   await this.actor.answer(ReviweRegistrationErrors.hasDuplicateEmailError);
+  console.log('✅ Se mostró el error de email duplicado');
+  await this.actor.attemptsTo(
+    Ensure.that(ReviweRegistrationErrors.hasDuplicateEmailError, equals(true))
+  );
 });
 
 // Implementación de los steps faltantes
-When('the user tries to register with password {string}', async function (this: CustomWorld, password) {
+When('the user tries to register with password {string}', { timeout: 40000 }, async function (this: CustomWorld, password) {
   await this.actor.attemptsTo(
     RegisterUser.withData({
       firstName: 'Test',
@@ -75,7 +79,7 @@ When('the user tries to register with password {string}', async function (this: 
   );
 });
 
-Then('the system should show password minimum length error', async function (this: CustomWorld) {
+Then('the system should show password minimum length error',{ timeout: 40000 }, async function (this: CustomWorld) {
   await this.actor.answer(ReviweRegistrationErrors.hasPasswordMinLengthError);
   console.log('✅ Se mostró el error de longitud mínima de contraseña');
   await this.actor.attemptsTo(
@@ -84,7 +88,7 @@ Then('the system should show password minimum length error', async function (thi
 
 });
 
-Then('the system should show password complexity error', async function (this: CustomWorld) {
+Then('the system should show password complexity error',{ timeout: 40000 }, async function (this: CustomWorld) {
   await this.actor.answer(ReviweRegistrationErrors.hasPasswordComplexityError);
   console.log('✅ Se mostró el error de complejidad de contraseña');
   await this.actor.attemptsTo(
@@ -92,7 +96,7 @@ Then('the system should show password complexity error', async function (this: C
   );
 });
 
-When('the user tries to register with first name {string}', async function (this: CustomWorld, firstName) {
+When('the user tries to register with first name {string}',{ timeout: 40000 }, async function (this: CustomWorld, firstName) {
   await this.actor.attemptsTo(
     RegisterUser.withData({
       firstName,
@@ -105,7 +109,7 @@ When('the user tries to register with first name {string}', async function (this
   );
 });
 
-Then('the system should show first name is not valid!', async function (this: CustomWorld) {
+Then('the system should show first name is not valid!',{ timeout: 40000 }, async function (this: CustomWorld) {
   await this.actor.answer(ReviweRegistrationErrors.hasFirstNameError);
   console.log('✅ Se mostró el error de nombre inválido');
   await this.actor.attemptsTo(
@@ -113,7 +117,7 @@ Then('the system should show first name is not valid!', async function (this: Cu
   );
 });
 
-When('the user tries to register with last name {string}', async function (this: CustomWorld, lastName) {
+When('the user tries to register with last name {string}',{ timeout: 40000 }, async function (this: CustomWorld, lastName) {
   await this.actor.attemptsTo(
     RegisterUser.withData({
       firstName: 'Test',
@@ -126,7 +130,7 @@ When('the user tries to register with last name {string}', async function (this:
   );
 });
 
-Then('the system should show last name is not valid!', async function (this: CustomWorld) {
+Then('the system should show last name is not valid!',{ timeout: 40000 }, async function (this: CustomWorld) {
   await this.actor.answer(ReviweRegistrationErrors.hasLastNameError);
   console.log('✅ Se mostró el error de apellido inválido');
   await this.actor.attemptsTo(
@@ -134,7 +138,7 @@ Then('the system should show last name is not valid!', async function (this: Cus
   );
 });
 
-When('the user tries to register with email {string}', async function (this: CustomWorld, email) {
+When('the user tries to register with email {string}',{ timeout: 40000 }, async function (this: CustomWorld, email) {
   await this.actor.attemptsTo(
     RegisterUser.withData({
       firstName: 'Test',
@@ -147,7 +151,7 @@ When('the user tries to register with email {string}', async function (this: Cus
   );
 });
 
-Then('the system should show email is not valid!', async function (this: CustomWorld) {
+Then('the system should show email is not valid!',{ timeout: 40000 }, async function (this: CustomWorld) {
   await this.actor.answer(ReviweRegistrationErrors.hasInvalidEmailError);
   console.log('✅ Se mostró el error de email inválido');
   await this.actor.attemptsTo(
