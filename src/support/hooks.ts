@@ -6,7 +6,7 @@ BeforeAll(() => {
     configure({
         crew: [
             [ '@serenity-js/serenity-bdd', {
-                specDirectory: path.resolve(__dirname, '../spec'),
+                specDirectory: path.resolve(__dirname, '../Resource/features'),
                 reporter: {
                     includeAbilityDetails: true,
                 },
