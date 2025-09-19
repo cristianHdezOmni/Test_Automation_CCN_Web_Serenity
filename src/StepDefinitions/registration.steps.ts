@@ -5,7 +5,7 @@ import { OpenPageUrlRegistration } from '../Tasks/OpenPageUrlRegistration';
 import { ReviweRegistrationErrors } from '../Questions/ReviweRegistrationErrors';
 import { ReviweRegistrationSuccess } from '../Questions/ReviweRegistrationSuccess';
 import { CustomWorld } from '../support/world';
-import { User } from '../Model/User';
+
 
 Given('the user is on the registration page', { timeout: 60000 }, async function (this: CustomWorld) {
   await this.actor.attemptsTo(
@@ -13,15 +13,8 @@ Given('the user is on the registration page', { timeout: 60000 }, async function
   );
 });
 
-When('the user registers with valid information:', { timeout: 60000 }, async function (this: CustomWorld, dataTable) {
-  const user = dataTable.hashes()[0] as User;
-  console.log(user);
-  await this.actor.attemptsTo(
-    RegisterUser.withData({
-      ...user,
-      email: `usertestqa.${Date.now()}@omni.pro`
-    })
-  );
+When('the user registers with valid information', { timeout: 60000 }, async function (this: CustomWorld) {   
+  await this.actor.attemptsTo(RegisterUser.withData());
 });
 
 Then('the user should be successfully registered', { timeout: 40000 }, async function (this: CustomWorld) {
@@ -46,14 +39,7 @@ Then('the user should be successfully registered', { timeout: 40000 }, async fun
 
 When('the user tries to register with duplicate email {string}',{ timeout: 40000 }, async function (this: CustomWorld, email) {
   await this.actor.attemptsTo(
-    RegisterUser.withData({
-      firstName: 'Carlos',
-      lastName: 'Perez',
-      dateOfBirth: '01/01/1990',
-      document: '11111111',
-      email:email,
-      password: 'Password123!'
-    })
+    RegisterUser.withData({ email })
   );
 });
 
@@ -65,17 +51,10 @@ Then('the system should show duplicate email error', { timeout: 40000 }, async f
   );
 });
 
-// Implementación de los steps faltantes
+
 When('the user tries to register with password {string}', { timeout: 40000 }, async function (this: CustomWorld, password) {
   await this.actor.attemptsTo(
-    RegisterUser.withData({
-      firstName: 'Test',
-      lastName: 'User',
-      dateOfBirth: '01/01/1990',
-      document: '12345678',
-      email: `usertestqa.${Date.now()}@omni.pro`,
-      password
-    })
+    RegisterUser.withData({password})
   );
 });
 
@@ -98,14 +77,7 @@ Then('the system should show password complexity error',{ timeout: 40000 }, asyn
 
 When('the user tries to register with first name {string}',{ timeout: 40000 }, async function (this: CustomWorld, firstName) {
   await this.actor.attemptsTo(
-    RegisterUser.withData({
-      firstName,
-      lastName: 'User',
-      dateOfBirth: '01/01/1990',
-      document: '12345678',
-      email: `usertestqa.${Date.now()}@omni.pro`,
-      password: 'Password123!'
-    })
+    RegisterUser.withData({firstName})
   );
 });
 
@@ -119,14 +91,7 @@ Then('the system should show first name is not valid!',{ timeout: 40000 }, async
 
 When('the user tries to register with last name {string}',{ timeout: 40000 }, async function (this: CustomWorld, lastName) {
   await this.actor.attemptsTo(
-    RegisterUser.withData({
-      firstName: 'Test',
-      lastName,
-      dateOfBirth: '01/01/1990',
-      document: '12345678',
-      email: `usertestqa.${Date.now()}@omni.pro`,
-      password: 'Password123!'
-    })
+    RegisterUser.withData({lastName})
   );
 });
 
@@ -140,14 +105,7 @@ Then('the system should show last name is not valid!',{ timeout: 40000 }, async 
 
 When('the user tries to register with email {string}',{ timeout: 40000 }, async function (this: CustomWorld, email) {
   await this.actor.attemptsTo(
-    RegisterUser.withData({
-      firstName: 'Test',
-      lastName: 'User',
-      dateOfBirth: '01/01/1990',
-      document: '12345678',
-      email,
-      password: 'Password123!'
-    })
+    RegisterUser.withData({email})
   );
 });
 

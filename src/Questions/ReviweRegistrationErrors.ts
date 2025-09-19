@@ -1,4 +1,4 @@
-import { Question, Wait, AnswersQuestions, UsesAbilities, Duration} from '@serenity-js/core';
+import { Question, Wait, AnswersQuestions, UsesAbilities} from '@serenity-js/core';
 import { PageElement, By, isVisible } from '@serenity-js/web';
 import { RegistrationPage } from '../PageObject/RegistrationPage';
 

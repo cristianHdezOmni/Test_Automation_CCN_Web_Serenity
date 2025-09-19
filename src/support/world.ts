@@ -1,5 +1,3 @@
-
-
 import { actorCalled } from '@serenity-js/core';
 import { BrowseTheWebWithPlaywright } from '@serenity-js/playwright';
 import { chromium } from 'playwright';
@@ -12,10 +10,10 @@ export class CustomWorld {
 
 setWorldConstructor(CustomWorld);
 
-Before({ timeout: 40000 }, async function () {
+Before({ timeout: 30000 }, async function () {
     // 🎭 Configuración del navegador basada en variable de entorno
-    //const headless = process.env.HEADLESS === 'true' || false;
-    const headless = process.env.HEADLESS !== 'false';
+    const headless = process.env.HEADLESS === 'true' || false;
+    //const headless = process.env.HEADLESS !== 'false';
     const browser = await chromium.launch({
         channel: 'chrome', // 👈 esto lanza Google Chrome real
         headless: headless     // 👀 configurable según el ambiente
@@ -35,7 +33,7 @@ Before({ timeout: 40000 }, async function () {
 
 // Hook to clean up resources after each scenario
 
-After(async function () {
+After({ timeout: 40000 },async function () {
     if (this.cleanup) {
         await this.cleanup();
     }

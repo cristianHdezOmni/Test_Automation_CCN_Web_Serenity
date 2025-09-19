@@ -3,20 +3,7 @@ import { PageElement, By, isVisible } from '@serenity-js/web';
 import { Ensure, equals } from '@serenity-js/assertions';
 import { RegistrationPage } from '../PageObject/RegistrationPage';
 
-export class ReviweRegistrationSuccess {
-
-  /*static isVisibleUserProfile() {
-    return {
-      async answeredBy(actor: Actor) {
-        const greeting = PageElement.located(By.xpath(RegistrationPage.greetingLoggedIn));
-        await actor.attemptsTo(
-          Wait.until(greeting, isVisible()),
-          Ensure.that(greeting.isVisible(), equals(true))
-        );
-        return await greeting.isVisible().answeredBy(actor);
-      }
-    };
-  }*/
+export class ReviweRegistrationSuccess { 
 
   public static readonly isVisibleUserProfile = Question.about('el usuario ve el saludo', async actor => {
     const greeting = PageElement.located(By.xpath(RegistrationPage.greetingLoggedIn));

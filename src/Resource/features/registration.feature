@@ -5,9 +5,7 @@ Feature: User Registration
 
   @smoke @registration01
   Scenario: Successful user registration
-    When the user registers with valid information:
-      | firstName | lastName | dateOfBirth | document | password      |
-      | User      | QARegresion | 15/05/1990  | 12345678 | Password123!  |
+    When the user registers with valid information    
     Then the user should be successfully registered
 
   @smoke @registration01

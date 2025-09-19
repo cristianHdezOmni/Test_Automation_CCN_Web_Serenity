@@ -6,6 +6,7 @@ npm-debug.log*
 reports/
 allure-results/
 test-results/
+target/
 
 # Archivos temporales
 *.tmp
