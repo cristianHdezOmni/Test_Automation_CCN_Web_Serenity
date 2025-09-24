@@ -1,0 +1,2 @@
+email,password,orderNumber,totalPrice,paymentMethod,status
+qa_user@test.com,123456,STG8000282389,99.98,Pago Azul,COMPLETED

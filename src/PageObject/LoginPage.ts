@@ -11,5 +11,7 @@ export class LoginPage {
 
   static readonly errorEmailField = '//div[@id="email-error"]';
   static readonly errorPasswordField = '//div[@id="password-error"]';
+
+  static readonly WPN_POPUP_MODAL_CONTENT = '*//button[@class="wpn-popup-close "]';
 }
 
