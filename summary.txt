@@ -1,8 +1,8 @@
-Serenity report generated 25-09-2025 05:42:51
+Serenity report generated 25-09-2025 06:14:58
 
-Number of scenarios:  5
-Number of test cases: 5
-Passed:               5
+Number of scenarios:  0
+Number of test cases: 0
+Passed:               0
 Failed:               0
 Failed with errors:   0
 Compromised:          0
