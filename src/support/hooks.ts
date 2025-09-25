@@ -16,8 +16,7 @@ BeforeAll(() => {
                     // 🧩 Define la jerarquía de trazabilidad (business → feature → story → scenario)
                     requirementTypes: [
                         { name: 'capability', level: 0 },
-                        { name: 'feature', level: 1 },
-                        { name: 'story', level: 2 },                       
+                        { name: 'feature', level: 1 }                                             
                     ],                        
                 },
             } ],

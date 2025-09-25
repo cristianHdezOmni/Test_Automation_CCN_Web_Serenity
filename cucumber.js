@@ -32,7 +32,7 @@ module.exports = {
       'src/support/**/*.ts',
     ],
     paths: [
-      path.resolve(__dirname, 'src/Resource/features/**/*.feature'),
+      path.resolve(__dirname, '../Resource/features/**/*.feature'),
     ],
     format: [
       '@serenity-js/cucumber',
@@ -44,6 +44,6 @@ module.exports = {
       specDirectory: path.resolve(__dirname, 'src/Resource/features'),
     },
     tags: process.env.TAGS || '@Regresion',   // 👈 por defecto corre @Regresion
-    publishQuiet: true,                       // 👈 evita logs innecesarios en CI/CD
+    //publishQuiet: true,                       // 👈 evita logs innecesarios en CI/CD
   }
 };
