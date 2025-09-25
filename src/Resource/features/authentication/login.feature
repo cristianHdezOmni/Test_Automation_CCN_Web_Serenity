@@ -1,5 +1,5 @@
-@epic:Authentication
-@component:Login
+@capability:Authentication
+@feature:Login
 @story:UserAuthentication
 Feature: User Login
 

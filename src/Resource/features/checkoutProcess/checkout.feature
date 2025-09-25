@@ -1,5 +1,5 @@
-@epic:CheckoutProcess
-@component:Checkout
+@capability:CheckoutProcess
+@feature:Checkout
 @story:FinalizePurchase
 Feature: Checkout Process
 

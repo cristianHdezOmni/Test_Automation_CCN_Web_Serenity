@@ -13,8 +13,8 @@ BeforeAll(() => {
                     requirementsDirectory: path.resolve(__dirname, '../Resource/features'),
                     // 📌 Definir jerarquía de trazabilidad
                     requirementTypes: [
-                        { name: 'epic', level: 0 },
-                        { name: 'component', level: 1 },
+                        { name: 'capability', level: 0 },
+                        { name: 'feature', level: 1 },
                         { name: 'story', level: 2 }
                     ],
                     // 📊 Opciones adicionales

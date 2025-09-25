@@ -1,5 +1,5 @@
-@epic:Authentication
-@component:Registration
+@capability:Authentication
+@feature:Registration
 @story:NewUserRegistration
 Feature: User Registration
 

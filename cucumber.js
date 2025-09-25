@@ -22,8 +22,8 @@ module.exports = {
         includeAbilityDetails: true,
         requirementsDirectory: path.resolve(__dirname, 'src/Resource/features'),
         requirementTypes: [
-          { name: 'epic', level: 0 },
-          { name: 'component', level: 1 },
+          { name: 'capability', level: 0 },
+          { name: 'feature', level: 1 },
           { name: 'story', level: 2 },
         ],
         showStepDetails: true,
