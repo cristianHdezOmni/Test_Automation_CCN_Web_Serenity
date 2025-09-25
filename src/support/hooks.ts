@@ -9,12 +9,7 @@ BeforeAll(() => {
             [ '@serenity-js/serenity-bdd', {
                 specDirectory: path.resolve(__dirname, '../Resource/features'),
                 reporter: {
-                    includeAbilityDetails: true,
-                    requirementsDirectory: path.resolve(__dirname, '../Resource/features'),
-                    requirementTypes: [
-                        { name: 'capability', level: 0 },
-                        { name: 'feature', level: 1 }                      
-                    ]
+                    includeAbilityDetails: true,                    
                 },
             } ],
             [ '@serenity-js/core:ArtifactArchiver', {

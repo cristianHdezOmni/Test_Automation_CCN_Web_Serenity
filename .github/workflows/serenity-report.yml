@@ -31,7 +31,7 @@ jobs:
 
       - name: Run tests and generate Serenity JSON
         run: >
-          npx cucumber-js
+          npx cucumber-js --require-module ts-node/register --require src/support/world.ts --require src/support/hooks.ts --require src/StepDefinitions/**/*.ts src/Resource/features/**/*.feature --format @serenity-js/cucumber --format-options "{\"outputDirectory\": \"target/site/serenity\", \"specDirectory\": \"src/Resource/features\"}"
         continue-on-error: true
 
       - name: Generate Serenity BDD HTML report
