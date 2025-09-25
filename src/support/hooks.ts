@@ -9,7 +9,14 @@ BeforeAll(() => {
             [ '@serenity-js/serenity-bdd', {
                 specDirectory: path.resolve(__dirname, '../Resource/features'),
                 reporter: {
-                    includeAbilityDetails: true,                    
+                    includeAbilityDetails: true, 
+                    requirementsDirectory: path.resolve(__dirname, '../Resource/features'),
+                    // 📌 Definir jerarquía de trazabilidad
+                    requirementTypes: [
+                        { name: 'capability', level: 0 },
+                        { name: 'feature', level: 1 },
+                        { name: 'story', level: 2 }
+                    ]                   
                 },
             } ],
             [ '@serenity-js/core:ArtifactArchiver', {
