@@ -17,10 +17,10 @@ module.exports = {
     ],
     formatOptions: {
       outputDirectory: 'target/site/serenity',
-      specDirectory: path.resolve(__dirname, 'src/Resource/features'),
+      specDirectory: 'src/Resource/features',
       reporter: {
         includeAbilityDetails: true,
-        requirementsDirectory: path.resolve(__dirname, 'src/Resource/features'),
+        requirementsDirectory: 'src/Resource/features',
         requirementTypes: [
           { name: 'epic', level: 0 },
           { name: 'component', level: 1 },
