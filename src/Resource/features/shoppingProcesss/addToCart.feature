@@ -1,5 +1,6 @@
 @epic:ShoppingProcess
-@component:ShoppingCart
+@component:AddToCart
+#ShoppingCart
 @story:AddProduct
 Feature: add to cart 
 
