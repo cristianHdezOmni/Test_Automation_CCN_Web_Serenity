@@ -32,7 +32,7 @@ module.exports = {
       'src/support/**/*.ts',
     ],
     paths: [
-      path.resolve(__dirname, '../Resource/features/**/*.feature'),
+      'src/Resource/features/**/*.feature'
     ],
     format: [
       '@serenity-js/cucumber',
