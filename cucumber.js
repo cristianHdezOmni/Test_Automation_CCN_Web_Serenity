@@ -17,7 +17,7 @@ module.exports = {
     ],
     formatOptions: {
       outputDirectory: 'target/site/serenity',
-      specDirectory: 'src/Resource/features',
+      specDirectory: path.resolve(__dirname, 'src/Resource/features'),
       reporter: {
         includeAbilityDetails: true,
         requirementsDirectory: path.resolve(__dirname, 'src/Resource/features'),
