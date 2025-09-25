@@ -9,7 +9,7 @@ export class Login {
     static toApp(username: string, password: string) {
         return Task.where(`#actor logs in with valid credentials`,
             Wait.for(Duration.ofSeconds(2)),
-            PageElement.located(By.xpath(LoginPage.WPN_POPUP_MODAL_CONTENT)).click(),
+            //PageElement.located(By.xpath(LoginPage.WPN_POPUP_MODAL_CONTENT)).click(),
             PageElement.located(By.xpath(LoginPage.emailField)).enterValue(username),
             PageElement.located(By.xpath(LoginPage.passwordField)).enterValue(password),
             //Wait.until(PageElement.located(By.xpath(LoginPage.loginButton)), isVisible()),

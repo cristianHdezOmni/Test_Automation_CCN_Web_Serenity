@@ -9,7 +9,7 @@ export class RegisterUser {
         const user: User = { ...generateFakeUser(), ...overrides };
         return Task.where(`#actor registers a new user`,
             Wait.for(Duration.ofSeconds(6)),
-            PageElement.located(By.xpath(LoginPage.WPN_POPUP_MODAL_CONTENT)).click(),
+            //PageElement.located(By.xpath(LoginPage.WPN_POPUP_MODAL_CONTENT)).click(),
             PageElement.located(By.xpath(RegistrationPage.firstNameField)).enterValue(user.firstName),
             PageElement.located(By.xpath(RegistrationPage.lastNameField)).enterValue(user.lastName),
             PageElement.located(By.xpath(RegistrationPage.dobField)).enterValue(user.dateOfBirth),
