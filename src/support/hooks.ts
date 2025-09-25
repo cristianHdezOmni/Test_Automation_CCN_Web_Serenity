@@ -9,15 +9,12 @@ BeforeAll(() => {
             [ '@serenity-js/serenity-bdd', {
                 specDirectory: path.resolve(__dirname, '../Resource/features'),
                 reporter: {
-                    // 👀 Muestra las habilidades de los actores en el reporte
                     includeAbilityDetails: true,
-                    // 📂 Directorio donde están los .feature
                     requirementsDirectory: path.resolve(__dirname, '../Resource/features'),
-                    // 🧩 Define la jerarquía de trazabilidad (business → feature → story → scenario)
                     requirementTypes: [
                         { name: 'capability', level: 0 },
-                        { name: 'feature', level: 1 }                                             
-                    ],                        
+                        { name: 'feature', level: 1 }                      
+                    ]
                 },
             } ],
             [ '@serenity-js/core:ArtifactArchiver', {
