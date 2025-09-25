@@ -16,7 +16,11 @@ BeforeAll(() => {
                         { name: 'capability', level: 0 },
                         { name: 'feature', level: 1 },
                         { name: 'story', level: 2 }
-                    ]                   
+                    ],
+                    // 📊 Opciones adicionales
+                    showStepDetails: true,        // muestra Given/When/Then en reporte
+                    embedScreenshots: true,       // incrusta capturas de pantalla
+                    includeExecutionTimes: true,  // incluye métricas de tiempos                   
                 },
             } ],
             [ '@serenity-js/core:ArtifactArchiver', {
