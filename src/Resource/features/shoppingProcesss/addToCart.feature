@@ -1,6 +1,5 @@
 @capability:ShoppingProcess
 @feature:AddToCart
-#ShoppingCart
 @story:AddProduct
 Feature: add to cart 
 
