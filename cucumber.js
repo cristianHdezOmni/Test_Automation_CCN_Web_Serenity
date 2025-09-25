@@ -13,6 +13,6 @@ module.exports = {
     ],
     //publishQuiet: true, // 👈 evita logs innecesarios en CI/CD
     // Configuración de tags
-    tags: process.env.TAGS || '@checkoutII' // Por defecto ejecuta solo @smoke
+    tags: process.env.TAGS || '@Regresion' // Por defecto ejecuta solo @smoke
   }
 };
