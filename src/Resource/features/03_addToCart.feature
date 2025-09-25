@@ -1,3 +1,6 @@
+@epic:ShoppingProcess
+@component:ShoppingCart
+@story:AddProduct
 Feature: add to cart 
 
 Background:
