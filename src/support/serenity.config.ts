@@ -65,12 +65,12 @@ After({ timeout: 40000 },async function () {
 BeforeAll(() => {
     configure({
         crew: [
-           ConsoleReporter.withDefaultColourSupport(),
+          // ConsoleReporter.withDefaultColourSupport(),
            // ✅ Reporter con procesadores requeridos
            // ✅ Reporter estándar
-           SerenityBDDReporter(),
+           //SerenityBDDReporter(),
            // ✅ Archiver usando ruta por defecto
-           ArtifactArchiver.storingArtifactsAt('target/site/serenity'),
+          // ArtifactArchiver.storingArtifactsAt('target/site/serenity'),
             [ '@serenity-js/serenity-bdd', {
                 specDirectory: path.resolve(__dirname, '../Resource/features'),
                 reporter: {
