@@ -20,7 +20,7 @@ module.exports = {
       specDirectory: 'src/Resource/features',
       reporter: {
         includeAbilityDetails: true,
-        requirementsDirectory: 'src/Resource/features',
+        requirementsDirectory: path.resolve(__dirname, 'src/Resource/features'),
         requirementTypes: [
           { name: 'epic', level: 0 },
           { name: 'component', level: 1 },
