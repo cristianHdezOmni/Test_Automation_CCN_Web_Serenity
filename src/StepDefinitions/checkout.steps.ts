@@ -16,7 +16,7 @@ import { ReviewAndPaymentMethod } from '../Questions/ReviewAndPaymentMethod';
 import { ReviewCheckoutError } from '../Questions/ReviewCheckoutError';
 import { ReviewJob } from '../Questions/ReviewJob';
 import { ReviewDeliverySlot } from '../Questions/ReviweDeliverySlot';
-import { CustomWorld } from '../support/serenity.config';
+import { CustomWorld } from '../support/world';
 import { Memory } from '../Utils/Memory';
 
 When('the user clicks the Proceed to Checkout button from the cart', { timeout: 40000 }, async function (this: CustomWorld) {
