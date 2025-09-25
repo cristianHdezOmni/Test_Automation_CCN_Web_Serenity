@@ -12,7 +12,8 @@ BeforeAll(() => {
                     includeAbilityDetails: true,
                     requirementsDirectory: path.resolve(__dirname, '../Resource/features'),
                     requirementTypes: [
-                        { name: 'feature', level: 0 }                        
+                        { name: 'capability', level: 0 },
+                        { name: 'feature', level: 1 }                      
                     ]
                 },
             } ],
