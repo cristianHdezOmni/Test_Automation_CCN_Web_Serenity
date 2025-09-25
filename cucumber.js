@@ -5,7 +5,10 @@ module.exports = {
       'src/StepDefinitions/**/*.ts',
       'src/support/**/*.ts',
     ],  
-    paths: ['src/Resource/features/**/*.feature'],
+    paths: [
+      //'src/Resource/features/**/*.feature'
+      path.resolve(__dirname, '../Resource/features/**/*.feature'),
+    ],
      format: [
       '@serenity-js/cucumber',
       'summary',
