@@ -1,3 +1,5 @@
+const path = require('path');   // 👈 Importa path
+
 module.exports = {
   default: {
     requireModule: ['ts-node/register'], 
