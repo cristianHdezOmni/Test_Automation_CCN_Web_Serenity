@@ -4,7 +4,7 @@ import { RegisterUser } from '../Tasks/RegisterUser';
 import { OpenPageUrlRegistration } from '../Tasks/OpenPageUrlRegistration';
 import { ReviweRegistrationErrors } from '../Questions/ReviweRegistrationErrors';
 import { ReviweRegistrationSuccess } from '../Questions/ReviweRegistrationSuccess';
-import { CustomWorld } from '../support/world';
+import { CustomWorld } from '../support/serenity.config';
 
 
 Given('the user is on the registration page', { timeout: 60000 }, async function (this: CustomWorld) {

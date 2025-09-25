@@ -7,7 +7,7 @@ import { ViewCart } from '../Tasks/ViewCart';
 import { ReviewCartContents } from '../Questions/ReviewCartContents';
 import { ReviewCartTotal } from '../Questions/ReviewCartTotal';
 import { ReviewCartQuantity } from '../Questions/ReviewCartQuantity';
-import { CustomWorld } from '../support/world';
+import { CustomWorld } from '../support/serenity.config';
 
 Given('the user is on the product page', { timeout: 40000 }, async function (this: CustomWorld) {
     await this.actor.attemptsTo(

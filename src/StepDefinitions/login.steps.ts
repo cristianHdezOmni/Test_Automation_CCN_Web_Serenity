@@ -3,7 +3,7 @@ import { Ensure, includes, equals } from '@serenity-js/assertions';
 import { Login } from '../Tasks/Login';
 import { OpenPageUrlLogin } from '../Tasks/OpenPageUrlLogin';
 import { ReviewLoggedInUserGreeting } from '../Questions/ReviewLoggedInUserGreeting';
-import { CustomWorld } from '../support/world';
+import { CustomWorld } from '../support/serenity.config';
 
 Given('the user opens the login page', { timeout: 40000 }, async function (this: CustomWorld) {
     await this.actor.attemptsTo(

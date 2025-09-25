@@ -1,6 +1,7 @@
 import { Task, Wait, Duration, Interaction } from '@serenity-js/core';
 import { By, PageElement, isVisible, Select } from '@serenity-js/web';
 import { DeliveryInformationPage } from '../PageObject/DeliveryInformationPage';
+import {ScrollToElementCenter} from '../Interactions/ScrollToElementCenter'
 import { Memory } from '../Utils/Memory';
 
 export class SelectDeliverySlot {
@@ -17,6 +18,7 @@ export class SelectDeliverySlot {
 
     static willPickUpTheOrder() {
         return Task.where(`#actor confirms pickup order details`,
+            ScrollToElementCenter.to(DeliveryInformationPage.pickupConfirmationCheck),
             Wait.until(PageElement.located(By.xpath(DeliveryInformationPage.pickupConfirmationCheck)), isVisible()),
             PageElement.located(By.xpath(DeliveryInformationPage.pickupConfirmationCheck)).click(),
             Wait.until(PageElement.located(By.xpath(DeliveryInformationPage.telephoneInput)), isVisible()),

@@ -10,6 +10,12 @@ BeforeAll(() => {
                 specDirectory: path.resolve(__dirname, '../Resource/features'),
                 reporter: {
                     includeAbilityDetails: true,
+                    requirementsDirectory: path.resolve(__dirname, '../Resource/features'),
+                    requirementTypes: [
+                        { name: 'epic', level: 0 },
+                        { name: 'component', level: 1 },
+                        { name: 'story', level: 2 }
+                    ]
                 },
             } ],
             [ '@serenity-js/core:ArtifactArchiver', {

@@ -1,3 +1,6 @@
+@epic:Authentication
+@component:Registration
+@story:NewUserRegistration
 Feature: User Registration
 
   Background:

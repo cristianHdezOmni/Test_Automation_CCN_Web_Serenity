@@ -1,4 +1,7 @@
-Feature: Login
+@epic:Authentication
+@component:Login
+@story:UserAuthentication
+Feature: User Login
 
   @Regresion @login
   Scenario: Successful login

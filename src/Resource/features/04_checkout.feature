@@ -1,4 +1,7 @@
-Feature: Checkout
+@epic:CheckoutProcess
+@component:Payment
+@story:FinalizePurchase
+Feature: Checkout Process
 
   Background:
     Given the user opens the login page
