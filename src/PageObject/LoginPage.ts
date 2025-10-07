@@ -5,7 +5,8 @@ export class LoginPage {
   static readonly errorMessage = '.message-error';
 
   // Mensajes de saludo y error
-  static readonly greetingText = '//span[contains(@class, "logged-in")]';
+  //static readonly greetingText = '//span[contains(@class, "logged-in")]';
+  static readonly greetingText = '(//*[contains(@class, "box-content")]/p[1])[1]';
   static readonly errorUnsuccessfulLogin =
     '//div[@data-bind="html: $parent.prepareMessageForHtml(message.text)"]';
 

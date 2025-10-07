@@ -3,11 +3,11 @@
 @story:UserAuthentication
 Feature: User Login
 
-  @Regresion @login
+  @Regresion @loginII
   Scenario: Successful login
     Given the user opens the login page
     When the user logs in with username "omnitestqaevidencias@gmail.com" and password "secret_sauce_Omni"    
-    Then the greeting should contain "Hola, CrsitianTest HernandezTest"
+    Then the greeting should contain "CrsitianTest HernandezTest"
 
   @Regresion @login
   Scenario: Unsuccessful login

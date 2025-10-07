@@ -6,6 +6,7 @@ import * as path from 'path';
 BeforeAll(() => {
     configure({
         crew: [
+            '@serenity-js/console-reporter',
             [ '@serenity-js/serenity-bdd', {
                 specDirectory: path.resolve(__dirname, '../Resource/features'),
                 reporter: {
@@ -26,6 +27,7 @@ BeforeAll(() => {
             [ '@serenity-js/core:ArtifactArchiver', {
                 outputDirectory: path.resolve(__dirname, '../../target/site/serenity')
             } ],
+            [ '@serenity-js/web:Photographer', { strategy: 'TakePhotosOfInteractions' } ],
         ],
     });
 });
@@ -33,7 +35,7 @@ BeforeAll(() => {
 AfterStep(async function () {
     if (this.actor) {
         await this.actor.attemptsTo(
-            TakeScreenshot.of('step')
+           // TakeScreenshot.of('step')
         );
     }
 });
