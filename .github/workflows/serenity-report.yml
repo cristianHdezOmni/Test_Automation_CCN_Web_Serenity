@@ -50,7 +50,7 @@
 #           publish_dir: ./target/site/serenity
 
 
-name: Serenity BDD Report
+name: Run Tests - SerenityJS Report
 
 on:
   push:
