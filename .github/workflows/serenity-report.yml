@@ -177,14 +177,14 @@ env:
 # ===========================================================
 # 🧪 JOB 1: Ejecutar pruebas en paralelo por TAG
 # ===========================================================
-jobs:
+jobs:   
   run-parallel:
     name: "🧪 Pruebas (Run Tests) - tag ${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        tag: [ "@login", "@registration" ]   # 👈 Tags a ejecutar en paralelo
+        tag: [ "@login", "@registration" ]
     env:
       REPORT_DIR: ./target/site/serenity
     steps:
@@ -222,19 +222,24 @@ jobs:
             --format-options "{\"outputDirectory\": \"$REPORT_DIR\", \"specDirectory\": \"src/Resource/features\"}"
         continue-on-error: true
 
-      - name: 🔍 Verificar reportes generados
+      - name: 🔍 Diagnóstico de carpetas generadas
         if: always()
         run: |
-          echo "📂 Contenido de $REPORT_DIR"
-          ls -R $REPORT_DIR || echo "⚠️ No se encontraron archivos"
+          echo "📂 Listando ./target:"
+          ls -R ./target || echo "⚠️ No existe ./target"
+          echo "📂 Listando ./target/site:"
+          ls -R ./target/site || echo "⚠️ No existe ./target/site"
+          echo "📂 Listando ./target/site/serenity:"
+          ls -R ./target/site/serenity || echo "⚠️ No existe ./target/site/serenity"
 
       - name: 📤 Subir Serenity JSON artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: serenity-json-${{ matrix.tag }}
-          path: ${{ env.REPORT_DIR }}
+          path: ./target/site/serenity/**
           if-no-files-found: warn
+
 
 # ===========================================================
 # 🧩 JOB 2: Descargar y fusionar todos los artifacts
