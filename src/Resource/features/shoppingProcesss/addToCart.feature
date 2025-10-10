@@ -1,7 +1,7 @@
-@capability:ShoppingProcess
+@capability:ShoppingProcesss
 @feature:AddToCart
 @story:AddProduct
-Feature: add to cart 
+Feature: Add Product 
 
 Background:
  Given the user opens the login page

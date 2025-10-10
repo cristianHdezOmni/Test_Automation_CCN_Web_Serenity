@@ -6,17 +6,17 @@ Feature: User Registration
   Background:
     Given the user is on the registration page
 
-  @Regresion @registration01
+  @Regresion @registration
   Scenario: Successful user registration
     When the user registers with valid information    
     Then the user should be successfully registered
 
-  @Regresion @registration01
+  @Regresion @registration
   Scenario: Registration with duplicate email
     When the user tries to register with duplicate email "carlos.perez.testQA26@omni.pro"
     Then the system should show duplicate email error
 
-  @Regresion @registration01
+  @Regresion @registration
   Scenario: Registration with invalid password - minimum length
     When the user tries to register with password "123"
     Then the system should show password minimum length error
