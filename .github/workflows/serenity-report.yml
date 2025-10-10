@@ -292,7 +292,7 @@ jobs:
   merge-reports:
     name: "📊 Generar Reporte Consolidado"
     runs-on: ubuntu-latest
-    needs: run-parallel
+    needs: [run-parallel , run-last]
     env:
       REPORT_DIR: ./target/site/serenity
     steps:
