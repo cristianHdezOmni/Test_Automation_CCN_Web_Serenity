@@ -208,8 +208,11 @@ jobs:
             npm install
           fi
 
+      - name: 📁 Crear directorio de reportes
+        run: mkdir -p ./target/site/serenity    
+
       - name: 🧪 Ejecutar pruebas con tag ${{ matrix.tag }}
-        run: |
+        run: >
           npx cucumber-js \
             --require-module ts-node/register \
             --require src/support/world.ts \
@@ -219,7 +222,8 @@ jobs:
             --tags "${{ matrix.tag }}" \
             --format @serenity-js/cucumber \
             --format-options "{\"outputDirectory\": \"$REPORT_DIR\", \"specDirectory\": \"src/Resource/features\"}"
-        continue-on-error: true
+        continue-on-error: true      
+
 
       - name: 📤 Subir Serenity JSON artifact
         if: always()
@@ -227,6 +231,8 @@ jobs:
         with:
           name: serenity-json-${{ matrix.tag }}
           path: ${{ env.REPORT_DIR }}
+          if-no-files-found: warn
+          
 
   # ===========================================================
   # 🧩 JOB 2: Ejecuta el último tag (@sanity)
@@ -286,6 +292,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [run-parallel]
     steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
       - name: 📥 Descargar todos los artifacts Serenity JSON
         uses: actions/download-artifact@v4
         with:
@@ -302,10 +311,15 @@ jobs:
           fi
 
       - name: 🔄 Fusionar todos los JSON de Serenity
+        continue-on-error: true
         run: |
-          mkdir -p merged
-          find ./downloads -type f -name "*.json" -exec cp {} merged/ \;
-          echo "✅ Archivos JSON fusionados correctamente en ./merged"
+           mkdir -p merged
+            if [ -d "./downloads" ]; then
+              find ./downloads -type f -name "*.json" -exec cp {} merged/ \;
+              echo "✅ Archivos JSON fusionados en ./merged"
+            else
+              echo "⚠️ No se encontraron artefactos para fusionar"
+            fi
 
       - name: ⚙️ Instalar Node.js
         uses: actions/setup-node@v4
