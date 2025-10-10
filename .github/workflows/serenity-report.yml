@@ -61,7 +61,7 @@ on:
       - main
 
 env:
-  REPORT_DIR: "./target/site/serenity"
+  REPORT_DIR: "target/site/serenity"
 
 jobs:
   test:
@@ -114,12 +114,10 @@ jobs:
           java-version: '17'
 
       - name: Download Serenity CLI
-        run: |
-          wget https://repo.maven.apache.org/maven2/net/serenity-bdd/cli/3.6.18/cli-3.6.18-all.jar -O serenity-cli.jar
+        run: wget https://repo.maven.apache.org/maven2/net/serenity-bdd/serenity-cli/3.3.13/serenity-cli-3.3.13-all.jar -O serenity-cli.jar
 
       - name: Generate Serenity BDD HTML report
-        run: |
-          java -jar serenity-cli.jar aggregate $REPORT_DIR
+        run: java -jar serenity-cli.jar aggregate $REPORT_DIR
 
       - name: Upload Serenity report artifact
         uses: actions/upload-artifact@v4
