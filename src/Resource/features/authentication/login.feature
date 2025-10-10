@@ -5,7 +5,7 @@ Feature: User Login
    
 
   @Regresion @login
-  Scenario: Successful login
+  Scenario: Successful loginII
     Given the user opens the login page
     When the user logs in with username "omnitestqaevidencias@gmail.com" and password "secret_sauce_Omni"    
     Then the greeting should contain "CrsitianTest HernandezTest"

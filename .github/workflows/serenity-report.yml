@@ -64,7 +64,7 @@ env:
   REPORT_DIR: "./target/site/serenity"
 
 jobs:
-  Run_tests:
+  test:
     name: "🧪 Pruebas (Run Tests)"
     runs-on: ubuntu-latest
     steps:
@@ -99,7 +99,7 @@ jobs:
   generate_report:
     name: "📊 Reporte (Generate Report)"
     runs-on: ubuntu-latest
-    needs: Run_tests
+    needs: test
     steps:
       - name: Download Serenity JSON artifact
         uses: actions/download-artifact@v4
@@ -107,8 +107,19 @@ jobs:
           name: serenity-json
           path: ${{ env.REPORT_DIR }}
 
+      - name: Install Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Download Serenity CLI
+        run: |
+          wget https://repo.maven.apache.org/maven2/net/serenity-bdd/cli/3.6.18/cli-3.6.18-all.jar -O serenity-cli.jar
+
       - name: Generate Serenity BDD HTML report
-        run: npx serenity-bdd run
+        run: |
+          java -jar serenity-cli.jar aggregate $REPORT_DIR
 
       - name: Upload Serenity report artifact
         uses: actions/upload-artifact@v4
@@ -126,9 +137,7 @@ jobs:
         with:
           name: serenity-report
           path: ${{ env.REPORT_DIR }}
-
-      # Este job podría realizar validaciones adicionales o subir a otro sistema si lo requieres.
-      # Por ahora solo descarga el artefacto para el siguiente paso.
+      # Puedes agregar validaciones adicionales aquí si lo requieres.
 
   deploy_report:
     name: "🚀 Deploy (Deploy)"
