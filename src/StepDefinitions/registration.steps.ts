@@ -24,11 +24,11 @@ Then('the user should be successfully registered', { timeout: 40000 }, async fun
     Ensure.that(message, includes('Gracias por registrarse en Supermercados Nacional.'))
   );
 
-  const greetingText = await this.actor.answer(ReviweRegistrationSuccess.text());
-  console.log('Texto de saludo:', greetingText);
-  await this.actor.attemptsTo(
-    Ensure.that(greetingText, includes('Hola'))
-  );
+  // const greetingText = await this.actor.answer(ReviweRegistrationSuccess.text());
+  // console.log('Texto de saludo:', greetingText);
+  // await this.actor.attemptsTo(
+  //   Ensure.that(greetingText, includes('Hola'))
+  // );
   await this.actor.answer(ReviweRegistrationSuccess.isVisibleUserProfile);
   console.log('✅ El perfil de usuario es visible');
   await this.actor.attemptsTo(

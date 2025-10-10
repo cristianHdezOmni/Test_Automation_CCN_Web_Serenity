@@ -13,24 +13,24 @@ module.exports = {
      format: [
       '@serenity-js/cucumber',
       'summary',
-      'progress-bar'     // 👈 añade salida visible en consola
+      //'progress-bar'     // 👈 añade salida visible en consola
     ],
-    formatOptions: {
-      outputDirectory: 'target/site/serenity',
-      specDirectory: 'src/Resource/features',
-      reporter: {
-        includeAbilityDetails: true,
-        requirementsDirectory: path.resolve(__dirname, 'src/Resource/features'),
-        requirementTypes: [
-          { name: 'capability', level: 0 },
-          { name: 'feature', level: 1 },
-          { name: 'story', level: 2 },
-        ],
-        showStepDetails: true,
-        embedScreenshots: true,
-        includeExecutionTimes: true,
-      }
-    },
+    // formatOptions: {
+    //   outputDirectory: 'target/site/serenity',
+    //   specDirectory: 'src/Resource/features',
+    //   reporter: {
+    //     includeAbilityDetails: true,
+    //     requirementsDirectory: path.resolve(__dirname, 'src/Resource/features'),
+    //     requirementTypes: [
+    //       { name: 'capability', level: 0 },
+    //       { name: 'feature', level: 1 },
+    //       { name: 'story', level: 2 },
+    //     ],
+    //     showStepDetails: true,
+    //     embedScreenshots: true,
+    //     includeExecutionTimes: true,
+    //   }
+    // },
     //publishQuiet: true, // 👈 evita logs innecesarios en CI/CD
     // Configuración de tags
     tags: process.env.TAGS || '@Regresion' // Por defecto ejecuta solo @smoke

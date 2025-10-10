@@ -3,6 +3,7 @@
 @story:FinalizePurchase
 Feature: Checkout Process
 
+
   Background:
     Given the user opens the login page
     And the user logs in with username "omnitestqaevidencias@gmail.com" and password "secret_sauce_Omni"

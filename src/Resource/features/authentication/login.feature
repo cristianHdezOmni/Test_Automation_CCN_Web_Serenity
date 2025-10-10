@@ -2,8 +2,9 @@
 @feature:Login
 @story:UserAuthentication
 Feature: User Login
+   
 
-  @Regresion @loginII
+  @Regresion @login
   Scenario: Successful login
     Given the user opens the login page
     When the user logs in with username "omnitestqaevidencias@gmail.com" and password "secret_sauce_Omni"    

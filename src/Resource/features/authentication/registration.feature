@@ -1,5 +1,5 @@
 @capability:Authentication
-@feature:Rgeistration
+@feature:Registration
 @story:NewUserRegistration
 Feature: User Registration
 

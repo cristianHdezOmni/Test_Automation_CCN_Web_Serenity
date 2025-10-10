@@ -20,8 +20,11 @@ export class RegistrationPage {
   static readonly emailAddressError = '//div[@id="email_address-error"]';
 
   // Saludo usuario logueado después del registro
-  static readonly greetingLoggedIn = '//span[@class="logged-in"]';
-  static readonly greetingLoggedInContains = '//span[contains(@class, "logged-in")]';
+  // static readonly greetingLoggedIn = '//span[@class="logged-in"]';
+  // static readonly greetingLoggedInContains = '//span[contains(@class, "logged-in")]';
+  static readonly greetingLoggedIn = '(//*[contains(@class, "box-content")]/p[1])[1]';
+  static readonly greetingLoggedInContains = '(//*[contains(@class, "box-content")]/p[1])[1]';
+
 
   // Mensaje de éxito después del registro
   static readonly successMessage = '//div[contains(@class, "message-success") and contains(@class, "message")]//div[@data-bind[contains(., "prepareMessageForHtml")]]';
