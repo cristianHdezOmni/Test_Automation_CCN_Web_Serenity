@@ -61,94 +61,122 @@ on:
       - main
 
 env:
-  REPORT_DIR: "target/site/serenity"
+  REPORT_DIR: "./target/site/serenity"
 
 jobs:
   test:
-    name: "🧪 Pruebas (Run Tests)"
+    name: "🧪 Ejecutar pruebas en matriz"
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chrome, firefox]
+        environment: [stage] # Puedes agregar más: [stage, prod, qa]
+    
     steps:
-      - name: Checkout code
+      - name: 🧩 Checkout código
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: ⚙️ Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: 📦 Instalar dependencias
         run: npm ci
 
-      - name: Install Java 17
+      - name: ☕ Instalar Java 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Run tests and generate Serenity JSON
+      - name: 🧪 Ejecutar pruebas con Cucumber y SerenityJS
         run: >
-          npx cucumber-js --require-module ts-node/register --require src/support/world.ts --require src/support/hooks.ts --require src/StepDefinitions/**/*.ts src/Resource/features/**/*.feature --format @serenity-js/cucumber --format-options "{\"outputDirectory\": \"$REPORT_DIR\", \"specDirectory\": \"src/Resource/features\"}"
+          npx cucumber-js
+          --require-module ts-node/register
+          --require src/support/world.ts
+          --require src/support/hooks.ts
+          --require src/StepDefinitions/**/*.ts
+          src/Resource/features/**/*.feature
+          --format @serenity-js/cucumber
+          --format-options "{\"outputDirectory\": \"$REPORT_DIR/${{ matrix.browser }}-${{ matrix.environment }}\", \"specDirectory\": \"src/Resource/features\"}"
+        env:
+          BROWSER: ${{ matrix.browser }}
+          ENVIRONMENT: ${{ matrix.environment }}
         continue-on-error: true
 
-      - name: Upload Serenity JSON artifact
+      - name: 📤 Subir resultados JSON Serenity
         uses: actions/upload-artifact@v4
         with:
-          name: serenity-json
-          path: ${{ env.REPORT_DIR }}
+          name: serenity-json-${{ matrix.browser }}-${{ matrix.environment }}
+          path: ${{ env.REPORT_DIR }}/${{ matrix.browser }}-${{ matrix.environment }}
 
-  generate_report:
-    name: "📊 Reporte (Generate Report)"
+  merge_reports:
+    name: "🧩 Consolidar JSONs de Serenity"
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Download Serenity JSON artifact
+      - name: 📥 Descargar artefactos Serenity JSON
         uses: actions/download-artifact@v4
         with:
-          name: serenity-json
           path: ${{ env.REPORT_DIR }}
 
-      - name: Install Java 17
+      - name: 🧱 Reestructurar carpetas (merge de reportes)
+        run: |
+          mkdir -p merged
+          find $REPORT_DIR -type f -name '*.json' -exec cp {} merged/ \;
+
+      - name: 📤 Subir JSON consolidado
+        uses: actions/upload-artifact@v4
+        with:
+          name: serenity-json-merged
+          path: merged/
+
+  generate_report:
+    name: "📊 Generar reporte Serenity BDD"
+    runs-on: ubuntu-latest
+    needs: merge_reports
+    steps:
+      - name: 📥 Descargar JSON consolidado
+        uses: actions/download-artifact@v4
+        with:
+          name: serenity-json-merged
+          path: merged/
+
+      - name: ☕ Instalar Java 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Download Serenity CLI
-        run: wget https://repo.maven.apache.org/maven2/net/serenity-bdd/serenity-cli/3.3.13/serenity-cli-3.3.13-all.jar -O serenity-cli.jar
+      - name: 🧰 Instalar dependencias
+        run: npm ci
 
-      - name: Generate Serenity BDD HTML report
-        run: java -jar serenity-cli.jar aggregate $REPORT_DIR
+      - name: 🧮 Generar reporte HTML con Serenity BDD
+        run: npx serenity-bdd run --features src/Resource/features --destination $REPORT_DIR
+        env:
+          SERENITY_JSON_DIR: merged
 
-      - name: Upload Serenity report artifact
+      - name: 📤 Subir artefacto de reporte
         uses: actions/upload-artifact@v4
         with:
           name: serenity-report
           path: ${{ env.REPORT_DIR }}
 
-  upload_report:
-    name: "📦 Subir artefacto (Upload)"
+  deploy_report:
+    name: "🚀 Publicar reporte en GitHub Pages"
     runs-on: ubuntu-latest
     needs: generate_report
     steps:
-      - name: Download Serenity report artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: serenity-report
-          path: ${{ env.REPORT_DIR }}
-      # Puedes agregar validaciones adicionales aquí si lo requieres.
-
-  deploy_report:
-    name: "🚀 Deploy (Deploy)"
-    runs-on: ubuntu-latest
-    needs: upload_report
-    steps:
-      - name: Download Serenity report artifact
+      - name: 📥 Descargar reporte Serenity
         uses: actions/download-artifact@v4
         with:
           name: serenity-report
           path: ${{ env.REPORT_DIR }}
 
-      - name: Deploy Serenity Report to GitHub Pages
+      - name: 🌐 Deploy Serenity Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
