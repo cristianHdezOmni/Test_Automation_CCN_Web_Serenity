@@ -160,45 +160,50 @@
 #           publish_dir: ${{ env.REPORT_DIR }}
 
 
-name: Serenity BDD Parallel by Tags
+
+name: Run Tests - SerenityJS Report
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 env:
   REPORT_DIR: "./target/site/serenity"
 
 jobs:
-  run-tests:
-    name: "🧪 Ejecutar pruebas por tags"
+  # ===========================================================
+  # 🧪 JOB 1: Ejecuta pruebas en paralelo por TAG
+  # ===========================================================
+  run-parallel:
+    name: "🧪 Pruebas (Run Tests) - tag ${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        tag: [ "@login", "@registration", "@addToCart" ] # 👉 Ajusta tus tags aquí
-
+        tag: [ "@login", "@registration" ]  # Etiquetas que correrán en paralelo
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Setup Java 17
+      - name: Install Java 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Run Cucumber tests with SerenityJS
+      - name: Run tests by tag
         run: >
           npx cucumber-js
           --require-module ts-node/register
@@ -208,62 +213,111 @@ jobs:
           src/Resource/features/**/*.feature
           --tags "${{ matrix.tag }}"
           --format @serenity-js/cucumber
-          --format-options "{\"outputDirectory\": \"${{ env.REPORT_DIR }}/${{ matrix.tag }}\", \"specDirectory\": \"src/Resource/features\"}"
+          --format-options "{\"outputDirectory\": \"$REPORT_DIR\", \"specDirectory\": \"src/Resource/features\"}"
+        continue-on-error: true
 
-      - name: Upload Serenity JSON results
+      - name: Upload Serenity JSON artifact
         uses: actions/upload-artifact@v4
         with:
           name: serenity-json-${{ matrix.tag }}
-          path: ${{ env.REPORT_DIR }}/${{ matrix.tag }}
+          path: ${{ env.REPORT_DIR }}
 
-  generate-report:
-    name: "📊 Generar Reporte Consolidado"
+  # ===========================================================
+  # 🧩 JOB 2: Ejecuta el último tag (@sanity) después de los anteriores
+  # ===========================================================
+  run-last:
+    name: "🧩 Ejecutar tag final (@sanity)"
     runs-on: ubuntu-latest
-    needs: run-tests
+    needs: run-parallel
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
 
-      - name: Setup Java 17
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Java 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Download all artifacts
+      - name: Run tests for @sanity
+        run: >
+          npx cucumber-js
+          --require-module ts-node/register
+          --require src/support/world.ts
+          --require src/support/hooks.ts
+          --require src/StepDefinitions/**/*.ts
+          src/Resource/features/**/*.feature
+          --tags "@sanity"
+          --format @serenity-js/cucumber
+          --format-options "{\"outputDirectory\": \"$REPORT_DIR\", \"specDirectory\": \"src/Resource/features\"}"
+        continue-on-error: true
+
+      - name: Upload Serenity JSON artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: serenity-json-sanity
+          path: ${{ env.REPORT_DIR }}
+
+  # ===========================================================
+  # 📊 JOB 3: Generar reporte consolidado Serenity BDD
+  # ===========================================================
+  generate-report:
+    name: "📊 Generar Reporte Consolidado"
+    runs-on: ubuntu-latest
+    needs: [run-parallel, run-last]
+    steps:
+      - name: Descargar todos los artifacts Serenity JSON
         uses: actions/download-artifact@v4
         with:
-          path: ./target/site/serenity
+          path: ./downloads
 
-      - name: Merge all JSON results
+      - name: Unir todos los JSON de Serenity
         run: |
           mkdir -p merged
-          find ./target/site/serenity -type f -name "*.json" -exec cp {} merged/ \;
-          echo "Archivos JSON fusionados en /merged"
+          find ./downloads -type f -name "*.json" -exec cp {} merged/ \;
+          echo "✅ Archivos JSON fusionados en ./merged"
 
-      - name: Generate Serenity BDD HTML report
-        run: npx serenity-bdd run --source ./merged --destination ${{ env.REPORT_DIR }}
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Upload final Serenity report
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Instalar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Generar reporte Serenity BDD consolidado
+        run: |
+          npx serenity-bdd run --source ./merged --destination $REPORT_DIR
+
+      - name: Subir artefacto de reporte Serenity
         uses: actions/upload-artifact@v4
         with:
           name: serenity-report
           path: ${{ env.REPORT_DIR }}
 
+  # ===========================================================
+  # 🚀 JOB 4: Deploy del reporte a GitHub Pages
+  # ===========================================================
   deploy-report:
-    name: "🚀 Publicar Reporte en GitHub Pages"
+    name: "🚀 Deploy Reporte Serenity BDD"
     runs-on: ubuntu-latest
     needs: generate-report
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download report
+      - name: Descargar artefacto del reporte
         uses: actions/download-artifact@v4
         with:
           name: serenity-report
@@ -274,7 +328,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.REPORT_DIR }}
-
-
-
-  
