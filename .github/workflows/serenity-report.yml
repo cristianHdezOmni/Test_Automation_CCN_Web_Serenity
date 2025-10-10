@@ -61,7 +61,7 @@ on:
       - main
 
 env:
-  REPORT_DIR: "./target/site/serenity"
+  REPORT_DIR: "target/site/serenity"
 
 jobs:
   test:
