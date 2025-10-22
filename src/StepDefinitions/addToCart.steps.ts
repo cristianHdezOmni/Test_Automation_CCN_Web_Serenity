@@ -23,20 +23,20 @@ Given('the user has added a product to the cart', { timeout: 50000 }, async func
 
 When('the user clicks the Add to Cart button', { timeout: 40000 }, async function (this: CustomWorld) {
     await this.actor.attemptsTo(
-        AddToCart.addProductToCart('Carne De Res Molida Brangus, Lb')
+        AddToCart.addProductToCart('Dobo De Res Brangus, Lb')
     );
 });
 
 When('the user clicks the Remove from Cart button', { timeout: 40000 }, async function (this: CustomWorld) {
     await this.actor.attemptsTo(
-        RemoveFromCart.clickDecreaseQtySingleProduct('Carne De Res Molida Brangus, Lb')
+        RemoveFromCart.clickDecreaseQtySingleProduct('Dobo De Res Brangus, Lb')
     );
 });
 
 When('the user updates the quantity', { timeout: 40000 }, async function (this: CustomWorld) {
     await this.actor.attemptsTo(
         ReviewCartQuantity.validateQuantity(0),
-        AddToCart.addProductToCart('Carne De Res Molida Brangus, Lb')
+        AddToCart.addProductToCart('Dobo De Res Brangus, Lb')
     );
 });
 
@@ -47,18 +47,18 @@ When('the user views the cart', { timeout: 40000 }, async function (this: Custom
 });
 
 Then('the cart should contain the added product', { timeout: 40000 }, async function (this: CustomWorld) {
-    const hasProductAddedMessage = await this.actor.answer(ReviewCartContents.hasProductAddedMessage('Carne De Res Molida Brangus, Lb'));
+    const hasProductAddedMessage = await this.actor.answer(ReviewCartContents.hasProductAddedMessage('Dobo De Res Brangus, Lb'));
     await this.actor.attemptsTo(
         Ensure.that(hasProductAddedMessage, equals(true))
     );
-    const hasDecreaseButton = await this.actor.answer(ReviewCartContents.hasDecreaseQtyButton('Carne De Res Molida Brangus, Lb'));
+    const hasDecreaseButton = await this.actor.answer(ReviewCartContents.hasDecreaseQtyButton('Dobo De Res Brangus, Lb'));
     await this.actor.attemptsTo(
         Ensure.that(hasDecreaseButton, equals(true))
     );
 });
 
 Then('the cart should be empty', { timeout: 40000 }, async function (this: CustomWorld) {
-    const hasNotDecreaseButton = await this.actor.answer(ReviewCartContents.hasNotDecreaseQtyButton('Carne De Res Molida Brangus, Lb'));
+    const hasNotDecreaseButton = await this.actor.answer(ReviewCartContents.hasNotDecreaseQtyButton('Dobo De Res Brangus, Lb'));
     await this.actor.attemptsTo(
         Ensure.that(hasNotDecreaseButton, equals(true))
     );
