@@ -36,7 +36,7 @@ Scenario: Validate payment method selection in the checkout process
   And the user selects a payment method
   Then the available payment methods should be displayed 
 
-@RegresionOK @checkoutI
+@RegresionOK @checkoutDone
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty   
