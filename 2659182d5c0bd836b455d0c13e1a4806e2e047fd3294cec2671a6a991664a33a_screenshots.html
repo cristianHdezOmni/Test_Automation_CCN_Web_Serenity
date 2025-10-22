@@ -183,7 +183,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 10-10-2025 04:49</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 22-10-2025 04:49</span>
     <br style="clear:left"/>
 </div>
 
@@ -263,9 +263,9 @@
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-x-circle-fill failure-icon fa-2x' title='FAILURE'></i></a></span>
                             <span class="test-case-title">
-                                <span class="success-color">Add a product to the cart
+                                <span class="failing-color">Add a product to the cart
                                     <span class="related-issue-title"></span>
                                 </span>
                             </span>
@@ -282,6 +282,46 @@
 
     <div id="beforetable"></div>
     <div id="contenttilttle">
+            <div class="screenshotFailure panel panel-danger">
+    <div style="display:block">
+        <div class="table">
+            <div class="row">
+                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
+                    <span class="error-message error-message-title">Assertion error: Timeout of 5s has expired while waiting for page element located by xpath ('//strong[@class='product name product-item-name']    [normalize-space(a/text())='Carne De Res Molida Brangus, Lb']    /ancestor::div[contains(@class, 'product-item-details')]    //button[contains(@class, 'tocart') and @title='A&ntilde;adir al carrito']') to become visibleExpectation: isVisible()Expected boolean:   trueReceived PlaywrightPageElementPlaywrightPageElement {  locator: PlaywrightLocator {    parent: PlaywrightRootLocator { }    selector: ByXPath {  value: '//strong[@class='product name product-item-name']    [normalize-space(a/text())='Carne De Res Molida Brangus, Lb']    /ancestor::div[contains(@class, 'product-item-details')]    //button[contains(@class, 'tocart') and @title='A&ntilde;adir al carrito']'    }  }}    at /home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/src/StepDefinitions/addToCart.steps.ts:26:19</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-overall"
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="bi bi-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-overall">
+            <div class="card">
+                <div class="card-header">
+                    <h4>AssertionError </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>.(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/src/StepDefinitions/addToCart.steps.ts:26)<br />.ErrorFactory.create()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/errors/ErrorFactory.ts:36)<br />.Stage.createError()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/stage/Stage.ts:328)<br />.RaiseErrors.create()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/errors/RaiseErrors.ts:59)<br />.Object.errorHandler()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/activities/Wait.ts:284)<br />.ScheduledOperation.invoke()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:180)<br />.ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:142)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.ScheduledOperation.invoke()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:168)<br />.ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:142)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts:151)<br /></pre>
+                    </div>
+
+                    <h4>
+                        Caused by: TimeoutExpiredError
+                    </h4>
+                    <div>
+                            <pre>Timeout of 5s has expired</pre>
+                        <pre>.ScheduledOperation.invoke()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :168)<br />.ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :142)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br />.async ScheduledOperation.poll()(/home/runner/work/Test_Automation_CCN_Web_Serenity/Test_Automation_CCN_Web_Serenity/node_modules/@serenity-js/core/src/screenplay/time/models/Scheduler.ts :151)<br /></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
     <!-- Swiper Carousel -->
     <div class="swiper">
         <div class="swiper-wrapper">
@@ -316,82 +356,58 @@
                     <img src="photo-linux-chromium-140.0.7339.207-page-element-located-by-xpath-afa17d4151.png" title=" &amp;lt;&amp;lt;page element located by xpath (&amp;apos;*//div[@class=&amp;quot;block block-customer-login&amp;quot;]//button[@class=&amp;quot;action login primary&amp;quot; and @id=&amp;quot;send2&amp;quot;]&amp;apos;)&amp;gt;&amp;gt;.click()" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-1b080e6fdb.png" title=" User Test QA Automation waits for 6s" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-a4d6fb5060.png" title=" User Test QA Automation waits for 6s" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-1b080e6fdb.png" title=" Given the user is on the product page" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-a4d6fb5060.png" title=" Given the user is on the product page" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-1b080e6fdb.png" title=" User Test QA Automation navigates to the Res category" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-a4d6fb5060.png" title=" User Test QA Automation navigates to the Res category" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-1b080e6fdb.png" title=" User Test QA Automation waits for 8s" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-a4d6fb5060.png" title=" User Test QA Automation waits for 8s" width="0" />
                 </div>
                 <div class="swiper-slide">
                     <img src="photo-linux-chromium-140.0.7339.207-page-element-located-by-xpath-ea46043a84.png" title=" &amp;lt;&amp;lt;page element located by xpath (&amp;apos;//span[contains(text(),&amp;quot;Regresar a la tienda&amp;quot;)]&amp;apos;)&amp;gt;&amp;gt;.click()" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-1149c95766.png" title=" User Test QA Automation waits for 10s" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-65b815e94e.png" title=" User Test QA Automation waits for 10s" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-a2fa142125.png" title=" User Test QA Automation waits until page element located by xpath (&amp;apos;//span[@class=&amp;quot;action nav-toggle&amp;quot;]&amp;apos;) does become visible" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-6f5d39ffd9.png" title=" User Test QA Automation waits until page element located by xpath (&amp;apos;//span[@class=&amp;quot;action nav-toggle&amp;quot;]&amp;apos;) does become visible" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-page-element-located-by-xpath-9573dec928.png" title=" &amp;lt;&amp;lt;page element located by xpath (&amp;apos;//span[@class=&amp;quot;action nav-toggle&amp;quot;]&amp;apos;)&amp;gt;&amp;gt;.click()" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-page-element-located-by-xpath-09ba72de4a.png" title=" &amp;lt;&amp;lt;page element located by xpath (&amp;apos;//span[@class=&amp;quot;action nav-toggle&amp;quot;]&amp;apos;)&amp;gt;&amp;gt;.click()" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-9573dec928.png" title=" User Test QA Automation waits for 3s" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-09ba72de4a.png" title=" User Test QA Automation waits for 3s" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-9573dec928.png" title=" User Test QA Automation waits until page element located by xpath (&amp;apos;(//span[@class=&amp;quot;category-name&amp;quot; and text()=&amp;quot;Carnes, Pescados y Mariscos&amp;quot;])[1]&amp;apos;) does become visible" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-09ba72de4a.png" title=" User Test QA Automation waits until page element located by xpath (&amp;apos;(//span[@class=&amp;quot;category-name&amp;quot; and text()=&amp;quot;Carnes, Pescados y Mariscos&amp;quot;])[1]&amp;apos;) does become visible" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-hovers-the-4e17b1f937.png" title=" User Test QA Automation hovers the mouse over page element located by xpath (&amp;apos;(//span[@class=&amp;quot;category-name&amp;quot; and text()=&amp;quot;Carnes, Pescados y Mariscos&amp;quot;])[1]&amp;apos;)" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-hovers-the-2f801024f2.png" title=" User Test QA Automation hovers the mouse over page element located by xpath (&amp;apos;(//span[@class=&amp;quot;category-name&amp;quot; and text()=&amp;quot;Carnes, Pescados y Mariscos&amp;quot;])[1]&amp;apos;)" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-c660322159.png" title=" User Test QA Automation waits for 3s" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-983fa687c9.png" title=" User Test QA Automation waits for 3s" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-c660322159.png" title=" User Test QA Automation waits until page element located by xpath (&amp;apos;(//span[@class=&amp;quot;category-name&amp;quot; and text()=&amp;quot;Res&amp;quot;])[1]&amp;apos;) does become visible" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-983fa687c9.png" title=" User Test QA Automation waits until page element located by xpath (&amp;apos;(//span[@class=&amp;quot;category-name&amp;quot; and text()=&amp;quot;Res&amp;quot;])[1]&amp;apos;) does become visible" width="0" />
                 </div>
                 <div class="swiper-slide">
                     <img src="photo-linux-chromium-140.0.7339.207-page-element-located-by-xpath-ea46043a84.png" title=" &amp;lt;&amp;lt;page element located by xpath (&amp;apos;(//span[@class=&amp;quot;category-name&amp;quot; and text()=&amp;quot;Res&amp;quot;])[1]&amp;apos;)&amp;gt;&amp;gt;.click()" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-4b8ad8f1ea.png" title=" User Test QA Automation waits for 5s" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-e54a7f4b65.png" title=" User Test QA Automation waits for 5s" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-4b8ad8f1ea.png" title=" When the user clicks the Add to Cart button" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-e54a7f4b65.png" title=" When the user clicks the Add to Cart button" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-4b8ad8f1ea.png" title=" User Test QA Automation adds product &amp;quot;Carne De Res Molida Brangus, Lb&amp;quot; to cart" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-e54a7f4b65.png" title=" User Test QA Automation adds product &amp;quot;Carne De Res Molida Brangus, Lb&amp;quot; to cart" width="0" />
                 </div>
                 <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-4b8ad8f1ea.png" title=" User Test QA Automation waits until page element located by xpath (&amp;apos;//strong[@class=&amp;quot;product name product-item-name&amp;quot;]\n            [normalize-space(a/text())=&amp;quot;Carne De Res Molida Brangus, Lb&amp;quot;]\n            /ancestor::div[contains(@class, &amp;quot;product-item-details&amp;quot;)]\n            //button[contains(@class, &amp;quot;tocart&amp;quot;) and @title=&amp;quot;A&ntilde;adir al carrito&amp;quot;]&amp;apos;) does become visible" width="0" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-scrolls-to-2379c53539.png" title=" User Test QA Automation scrolls to element center: //strong[@class=&amp;quot;product name product-item-name&amp;quot;]
-            [normalize-space(a/text())=&amp;quot;Carne De Res Molida Brangus, Lb&amp;quot;]
-            /ancestor::div[contains(@class, &amp;quot;product-item-details&amp;quot;)]
-            //button[contains(@class, &amp;quot;tocart&amp;quot;) and @title=&amp;quot;A&ntilde;adir al carrito&amp;quot;]" width="0" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-hovers-the-37e17b216c.png" title=" User Test QA Automation hovers the mouse over page element located by xpath (&amp;apos;//strong[@class=&amp;quot;product name product-item-name&amp;quot;]\n            [normalize-space(a/text())=&amp;quot;Carne De Res Molida Brangus, Lb&amp;quot;]\n            /ancestor::div[contains(@class, &amp;quot;product-item-details&amp;quot;)]\n            //button[contains(@class, &amp;quot;tocart&amp;quot;) and @title=&amp;quot;A&ntilde;adir al carrito&amp;quot;]&amp;apos;)" width="0" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-page-element-located-by-xpath-1fb92224fd.png" title=" &amp;lt;&amp;lt;page element located by xpath (&amp;apos;//strong[@class=&amp;quot;product name product-item-name&amp;quot;]\n            [normalize-space(a/text())=&amp;quot;Carne De Res Molida Brangus, Lb&amp;quot;]\n            /ancestor::div[contains(@class, &amp;quot;product-item-details&amp;quot;)]\n            //button[contains(@class, &amp;quot;tocart&amp;quot;) and @title=&amp;quot;A&ntilde;adir al carrito&amp;quot;]&amp;apos;)&amp;gt;&amp;gt;.click()" width="0" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-for-7819af4034.png" title=" User Test QA Automation waits for 3s" width="0" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-ensures-th-7819af4034.png" title=" Then the cart should contain the added product" width="0" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-ensures-th-7819af4034.png" title=" User Test QA Automation ensures that true does equal true" width="0" />
-                </div>
-                <div class="swiper-slide">
-                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-ensures-th-7819af4034.png" title=" User Test QA Automation ensures that true does equal true: <span class='success-color'>SUCCESS</span>" width="0" />
+                    <img src="photo-linux-chromium-140.0.7339.207-user-test-qa-automation-waits-unti-e54a7f4b65.png" title=" User Test QA Automation waits until page element located by xpath (&apos;//strong[@class=&quot;product name product-item-name&quot;]\n            [normalize-space(a/text())=&quot;Carne De Res Molida Brangus, Lb&quot;]\n            /ancestor::div[contains(@class, &quot;product-item-details&quot;)]\n            //button[contains(@class, &quot;tocart&quot;) and @title=&quot;Añadir al carrito&quot;]&apos;) does become visible: <span class='failing-color'>FAILURE</span>" width="0" />
                 </div>
         </div>
         <div class="swiper-button-prev"></div>
