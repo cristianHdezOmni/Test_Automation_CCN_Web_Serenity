@@ -273,7 +273,7 @@ jobs:
             --require src/support/hooks.ts \
             --require src/StepDefinitions/**/*.ts \
             src/Resource/features/**/*.feature \
-            --tags "@checkoutII" \
+            --tags "@checkoutDone" \
             --format @serenity-js/cucumber \
             --format-options "{\"outputDirectory\": \"$REPORT_DIR\", \"specDirectory\": \"src/Resource/features\"}"
         continue-on-error: true

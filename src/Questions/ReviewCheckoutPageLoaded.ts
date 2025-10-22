@@ -5,10 +5,16 @@ import { CheckoutPage } from '../PageObject/CheckoutPage';
 export class ReviewCheckoutPageLoaded {
     public static readonly status = () =>
         Question.about(`whether checkout page shipping form is loaded`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const shippingFormElement = PageElement.located(By.xpath(CheckoutPage.shippingForm));
-            await actor.answer(Wait.until(shippingFormElement, isVisible()));
-            const isElementVisible = await actor.answer(shippingFormElement.isVisible());
+
+             const shippingFormElement = PageElement.located(By.xpath(CheckoutPage.shippingForm));
             
+            // Espera hasta que el elemento sea visible
+            await actor.answer(
+                Wait.until(shippingFormElement, isVisible())
+            );
+            
+            // Ahora pregunta si realmente es visible
+            const isElementVisible = await actor.answer(shippingFormElement.isVisible());
             console.log(`Shipping Form visible: ${isElementVisible}`);
             
             if (!isElementVisible) {
@@ -16,11 +22,13 @@ export class ReviewCheckoutPageLoaded {
             }
             
             return isElementVisible;
+            
+           
         });
 
     public static readonly paymentSectionVisible = () =>
         Question.about(`whether payment methods section is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const paymentMethodsElement = PageElement.located(By.css(CheckoutPage.paymentMethods));
+            const paymentMethodsElement = PageElement.located(By.xpath(CheckoutPage.paymentMethods));
             await actor.answer(Wait.until(paymentMethodsElement, isVisible()));
             const isElementVisible = await actor.answer(paymentMethodsElement.isVisible());
             
@@ -35,7 +43,7 @@ export class ReviewCheckoutPageLoaded {
 
     public static readonly reviewSectionVisible = () =>
         Question.about(`whether review order section is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const reviewOrderElement = PageElement.located(By.css(CheckoutPage.reviewOrderSection));
+            const reviewOrderElement = PageElement.located(By.xpath(CheckoutPage.reviewOrderSection));
             await actor.answer(Wait.until(reviewOrderElement, isVisible()));
             const isElementVisible = await actor.answer(reviewOrderElement.isVisible());
             

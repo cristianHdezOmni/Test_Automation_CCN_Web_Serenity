@@ -137,8 +137,8 @@ export class SelectDeliverySlot {
             Interaction.where(`#actor confirms delivery`, () => {
                 console.log('🛠 Confirmando entrega...');
             }),
-            Wait.until(PageElement.located(By.css(DeliveryInformationPage.continueButton)), isVisible()),
-            PageElement.located(By.css(DeliveryInformationPage.continueButton)).click(),
+            Wait.until(PageElement.located(By.xpath(DeliveryInformationPage.continueButton)), isVisible()),
+            PageElement.located(By.xpath(DeliveryInformationPage.continueButton)).click(),
             Interaction.where(`#actor completes delivery setup`, () => {
                 console.log('✅ Información de entrega completada');
             }),

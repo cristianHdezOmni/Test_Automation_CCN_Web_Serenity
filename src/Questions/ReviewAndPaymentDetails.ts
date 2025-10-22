@@ -5,10 +5,10 @@ import { PaymentPage } from '../PageObject/PaymentPage';
 export class ReviewAndPaymentDetails {
     public static readonly hasBillingAddress = (expectedName: string, expectedPhone: string, expectedRegion: string, expectedCountry: string) =>
         Question.about(`whether billing address matches expected values`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const nameElement = PageElement.located(By.css(PaymentPage.billingName));
-            const phoneElement = PageElement.located(By.css(PaymentPage.billingPhone));
-            const regionElement = PageElement.located(By.css(PaymentPage.billingRegion));
-            const countryElement = PageElement.located(By.css(PaymentPage.billingCountry));
+            const nameElement = PageElement.located(By.xpath(PaymentPage.billingName));
+            const phoneElement = PageElement.located(By.xpath(PaymentPage.billingPhone));
+            const regionElement = PageElement.located(By.xpath(PaymentPage.billingRegion));
+            const countryElement = PageElement.located(By.xpath(PaymentPage.billingCountry));
 
             await actor.answer(Wait.until(nameElement, isVisible()));
             await actor.answer(Wait.until(phoneElement, isVisible()));
@@ -48,8 +48,8 @@ export class ReviewAndPaymentDetails {
 
     public static readonly hasDeliverySlot = () =>
         Question.about(`whether delivery slot information is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const dayElement = PageElement.located(By.css(PaymentPage.deliveryDay));
-            const timeElement = PageElement.located(By.css(PaymentPage.deliveryTime));
+            const dayElement = PageElement.located(By.xpath(PaymentPage.deliveryDay));
+            const timeElement = PageElement.located(By.xpath(PaymentPage.deliveryTime));
 
             await actor.answer(Wait.until(dayElement, isVisible()));
             await actor.answer(Wait.until(timeElement, isVisible()));

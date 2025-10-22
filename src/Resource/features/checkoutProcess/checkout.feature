@@ -11,25 +11,27 @@ Feature: Checkout Process
     
 
   
-@RegresionOK @checkoutI
+@RegresionOK @checkoutIII
 Scenario: Validate delivery information in the Billing Address section
   Given the user clicks the Add to Cart button
   And the user views the cart
   When the user clicks the Proceed to Checkout button from the cart
+  And the user will pick up the order
   And the user fills in the delivery information form with valid data
   Then the delivery information should be correctly displayed in the Billing Address section of the checkout page
 
-@RegresionOK @checkoutI
+@RegresionOK @checkoutIII
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty
 
 
-@RegresionOK @checkoutI
+@RegresionOK @checkoutDone
 Scenario: Validate payment method selection in the checkout process
   Given the user clicks the Add to Cart button
   And the user views the cart
   When the user clicks the Proceed to Checkout button from the cart
+  And the user will pick up the order
   And the user fills in the delivery information form with valid data
   And the user selects a payment method
   Then the available payment methods should be displayed 
@@ -44,6 +46,7 @@ Scenario: Verify order summary before placing order
   Given the user clicks the Add to Cart button
   And the user views the cart
   When the user clicks the Proceed to Checkout button from the cart
+  And the user will pick up the order
   And the user fills in the delivery information form with valid data  
   Then the order summary should display the total amount
 
@@ -53,7 +56,7 @@ Scenario: Remove a product from the cart
   Then the cart should be empty
 
 
-@RegresionOK @checkoutII
+@RegresionOK @checkoutIII
 Scenario: Place the order successfully
   Given the user clicks the Add to Cart button
   And the user views the cart
@@ -98,7 +101,7 @@ Scenario: Remove a product from the cart
   Then the cart should be empty
 
 
-@RegresionOK @checkoutI
+@RegresionOK @checkout
 Scenario: Validate card payment process with insufficient funds (DECLINED)
   Given the user clicks the Add to Cart button
   And the user views the cart
@@ -111,7 +114,7 @@ Scenario: Validate card payment process with insufficient funds (DECLINED)
   #And the user clicks in yes on the Credit Card
   Then the payment should be declined with the message "FOUND - DECLINADA"
 
-@RegresionOK @checkoutI
+@RegresionOK @checkout
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty

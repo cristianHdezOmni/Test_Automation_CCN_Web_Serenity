@@ -1,6 +1,7 @@
 import { Question, Wait, AnswersQuestions, UsesAbilities } from '@serenity-js/core';
 import { PageElement, By, isVisible } from '@serenity-js/web';
 import { PaymentPage } from '../PageObject/PaymentPage';
+import { ScrollToElementCenter} from "../Interactions/ScrollToElementCenter";
 
 /**
  * ReviewAndPaymentMethod
@@ -12,7 +13,7 @@ export class ReviewAndPaymentMethod {
      */
     public static readonly cardTitle = () =>
         Question.about(`whether card title is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const titleElement = PageElement.located(By.css(PaymentPage.cardTitle));
+            const titleElement = PageElement.located(By.xpath(PaymentPage.cardTitle));
             await actor.answer(Wait.until(titleElement, isVisible()));
             const isElementVisible = await actor.answer(titleElement.isVisible());
             
@@ -30,7 +31,7 @@ export class ReviewAndPaymentMethod {
      */
     public static readonly maskedCardNumber = () =>
         Question.about(`whether masked card number is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const cardNumberElement = PageElement.located(By.css(PaymentPage.maskedCardNumber));
+            const cardNumberElement = PageElement.located(By.xpath(PaymentPage.maskedCardNumber));
             await actor.answer(Wait.until(cardNumberElement, isVisible()));
             const isElementVisible = await actor.answer(cardNumberElement.isVisible());
             
@@ -48,7 +49,7 @@ export class ReviewAndPaymentMethod {
      */
     public static readonly cardExpiration = () =>
         Question.about(`whether card expiration date is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const expirationElement = PageElement.located(By.css(PaymentPage.cardExpiration));
+            const expirationElement = PageElement.located(By.xpath(PaymentPage.cardExpiration));
             await actor.answer(Wait.until(expirationElement, isVisible()));
             const isElementVisible = await actor.answer(expirationElement.isVisible());
             
@@ -66,9 +67,9 @@ export class ReviewAndPaymentMethod {
      */
     public static readonly allCardDetails = () =>
         Question.about(`whether all card details are visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const titleElement = PageElement.located(By.css(PaymentPage.cardTitle));
-            const cardNumberElement = PageElement.located(By.css(PaymentPage.maskedCardNumber));
-            const expirationElement = PageElement.located(By.css(PaymentPage.cardExpiration));
+            const titleElement = PageElement.located(By.xpath(PaymentPage.cardTitle));
+            const cardNumberElement = PageElement.located(By.xpath(PaymentPage.maskedCardNumber));
+            const expirationElement = PageElement.located(By.xpath(PaymentPage.cardExpiration));
 
             await actor.answer(Wait.until(titleElement, isVisible()));
             await actor.answer(Wait.until(cardNumberElement, isVisible()));
@@ -99,7 +100,8 @@ export class ReviewAndPaymentMethod {
      */
     public static readonly paymentMethodsVisible = () =>
         Question.about(`whether payment methods container is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const paymentMethodsElement = PageElement.located(By.css(PaymentPage.paymentMethods));
+            ScrollToElementCenter.to(PaymentPage.paymentMethods);
+            const paymentMethodsElement = PageElement.located(By.xpath(PaymentPage.paymentMethods));
             await actor.answer(Wait.until(paymentMethodsElement, isVisible()));
             const isElementVisible = await actor.answer(paymentMethodsElement.isVisible());
             

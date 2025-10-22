@@ -5,8 +5,8 @@ import { PaymentPage } from '../PageObject/PaymentPage';
 export class ProceedToPayment {
     static confirmsThePayment() {
         return Task.where(`#actor confirms the payment`,
-            Wait.until(PageElement.located(By.css(PaymentPage.proceedToPaymentButton)), isVisible()),
-            PageElement.located(By.css(PaymentPage.proceedToPaymentButton)).click(),
+            Wait.until(PageElement.located(By.xpath(PaymentPage.proceedToPaymentButton)), isVisible()),
+            PageElement.located(By.xpath(PaymentPage.proceedToPaymentButton)).click(),
             Interaction.where(`#actor confirms payment action`, () => {
                 console.log('✅ Se hizo clic en "Proceder al pago".');
             }),
@@ -20,8 +20,8 @@ export class ProceedToPayment {
             Interaction.where(`#actor clicks Yes in credit card iframe`, async (actor) => {
                 // Note: Iframe handling in Serenity/JS requires special approach
                 // This is a simplified version - you may need to use Switch.to() for iframe handling
-                const frameElement = PageElement.located(By.css(PaymentPage.threeDSFrame));
-                const yesButton = PageElement.located(By.css(PaymentPage.confirmYesCreditCartVisa));
+                const frameElement = PageElement.located(By.xpath(PaymentPage.threeDSFrame));
+                const yesButton = PageElement.located(By.xpath(PaymentPage.confirmYesCreditCartVisa));
                 
                 // Wait for iframe to be available
                 await actor.answer(Wait.until(frameElement, isVisible()));

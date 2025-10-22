@@ -36,9 +36,9 @@ export class ReviewJob {
 
             // Login process using Serenity/JS PageElement approach
             const emailField = PageElement.located(By.id('email'));
-            const continueButton = PageElement.located(By.css('button:has-text("Continuar")'));
-            const passwordField = PageElement.located(By.css('input[name="password"]'));
-            const submitButton = PageElement.located(By.css('button[type="submit"]'));
+            const continueButton = PageElement.located(By.xpath('button:has-text("Continuar")'));
+            const passwordField = PageElement.located(By.xpath('input[name="password"]'));
+            const submitButton = PageElement.located(By.xpath('button[type="submit"]'));
 
             await actor.answer(Wait.until(emailField, isVisible()));
             await actor.answer(emailField.enterValue(user));

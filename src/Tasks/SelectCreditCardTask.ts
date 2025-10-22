@@ -7,14 +7,15 @@ import { PaymentPage } from '../PageObject/PaymentPage';
  */
 export class SelectCreditCardTask {
     static withBalance() {
+        Wait.for(Duration.ofSeconds(8))
         return Task.where(`#actor selects credit card with balance`,
-            Wait.until(PageElement.located(By.css(PaymentPage.creditCardWithBalanceRadio)), isVisible()),
-            PageElement.located(By.css(PaymentPage.creditCardWithBalanceRadio)).click(),
+            Wait.until(PageElement.located(By.xpath(PaymentPage.creditCardWithBalanceRadio)), isVisible()),
+            PageElement.located(By.xpath(PaymentPage.creditCardWithBalanceRadio)).click(),
             Interaction.where(`#actor logs card selection`, () => {
                 console.log('✅ Seleccionada tarjeta Visa ending in 0059');
             }),
-            Wait.until(PageElement.located(By.css(PaymentPage.confirmButton)), isVisible()),
-            PageElement.located(By.css(PaymentPage.confirmButton)).click(),
+            Wait.until(PageElement.located(By.xpath(PaymentPage.confirmButton)), isVisible()),
+            PageElement.located(By.xpath(PaymentPage.confirmButton)).click(),
             Interaction.where(`#actor confirms selection`, () => {
                 console.log('✅ Confirmada selección de tarjeta con balance');
             }),
@@ -24,13 +25,13 @@ export class SelectCreditCardTask {
 
     static withoutBalance() {
         return Task.where(`#actor selects credit card without balance`,
-            Wait.until(PageElement.located(By.css(PaymentPage.creditCardWithoutBalanceRadio)), isVisible()),
-            PageElement.located(By.css(PaymentPage.creditCardWithoutBalanceRadio)).click(),
+            Wait.until(PageElement.located(By.xpath(PaymentPage.creditCardWithoutBalanceRadio)), isVisible()),
+            PageElement.located(By.xpath(PaymentPage.creditCardWithoutBalanceRadio)).click(),
             Interaction.where(`#actor logs card selection`, () => {
                 console.log('✅ Seleccionada tarjeta Visa ending in 0007');
             }),
-            Wait.until(PageElement.located(By.css(PaymentPage.confirmButton)), isVisible()),
-            PageElement.located(By.css(PaymentPage.confirmButton)).click(),
+            Wait.until(PageElement.located(By.xpath(PaymentPage.confirmButton)), isVisible()),
+            PageElement.located(By.xpath(PaymentPage.confirmButton)).click(),
             Interaction.where(`#actor confirms selection`, () => {
                 console.log('✅ Confirmada selección de tarjeta sin balance');
             }),

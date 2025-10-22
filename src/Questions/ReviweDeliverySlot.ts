@@ -5,7 +5,7 @@ import { DeliveryInformationPage } from '../PageObject/DeliveryInformationPage';
 export class ReviewDeliverySlot {
     public static readonly areSlotsDisplayed = () =>
         Question.about(`whether delivery slots are displayed`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const slotElement = PageElement.located(By.css(DeliveryInformationPage.availableHourSlot));
+            const slotElement = PageElement.located(By.xpath(DeliveryInformationPage.availableHourSlot));
             await actor.answer(Wait.until(slotElement, isVisible()));
             const isElementVisible = await actor.answer(slotElement.isVisible());
             
@@ -20,7 +20,7 @@ export class ReviewDeliverySlot {
 
     public static readonly countAvailableSlots = () =>
         Question.about(`how many delivery slots are available`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const slotsElements = PageElements.located(By.css(DeliveryInformationPage.allAvailableHourSlots));
+            const slotsElements = PageElements.located(By.xpath(DeliveryInformationPage.allAvailableHourSlots));
             const count = await actor.answer(slotsElements.count());
             
             console.log(`🔢 Slots disponibles encontrados: ${count}`);
@@ -30,7 +30,7 @@ export class ReviewDeliverySlot {
 
     public static readonly isNoSlotsAvailableMessageDisplayed = () =>
         Question.about(`whether no slots available message is displayed`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const noSlotsElement = PageElement.located(By.css(DeliveryInformationPage.noAvailableHourSlot));
+            const noSlotsElement = PageElement.located(By.xpath(DeliveryInformationPage.noAvailableHourSlot));
             await actor.answer(Wait.until(noSlotsElement, isVisible()));
             const isElementVisible = await actor.answer(noSlotsElement.isVisible());
             
@@ -45,7 +45,7 @@ export class ReviewDeliverySlot {
 
     public static readonly isSlotSavedInQuote = () =>
         Question.about(`whether slot is saved in quote`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const timeElement = PageElement.located(By.css(DeliveryInformationPage.pickupTimeLabel));
+            const timeElement = PageElement.located(By.xpath(DeliveryInformationPage.pickupTimeLabel));
             await actor.answer(Wait.until(timeElement, isVisible()));
             const savedTime = await actor.answer(timeElement.text());
             

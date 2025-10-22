@@ -12,7 +12,7 @@ export class ReviewOrderSummary {
      */
     public static readonly summaryTitleVisible = () =>
         Question.about(`whether order summary title is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const titleElement = PageElement.located(By.css(PaymentPage.orderSummaryTitle));
+            const titleElement = PageElement.located(By.xpath(PaymentPage.orderSummaryTitle));
             await actor.answer(Wait.until(titleElement, isVisible()));
             const isElementVisible = await actor.answer(titleElement.isVisible());
             
@@ -30,7 +30,7 @@ export class ReviewOrderSummary {
      */
     public static readonly subtotalVisible = () =>
         Question.about(`whether order subtotal is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const subtotalElement = PageElement.located(By.css(PaymentPage.orderSubtotal));
+            const subtotalElement = PageElement.located(By.xpath(PaymentPage.orderSubtotal));
             await actor.answer(Wait.until(subtotalElement, isVisible()));
             const isElementVisible = await actor.answer(subtotalElement.isVisible());
             
@@ -48,7 +48,7 @@ export class ReviewOrderSummary {
      */
     public static readonly shippingVisible = () =>
         Question.about(`whether order shipping cost is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const shippingElement = PageElement.located(By.css(PaymentPage.orderShipping));
+            const shippingElement = PageElement.located(By.xpath(PaymentPage.orderShipping));
             await actor.answer(Wait.until(shippingElement, isVisible()));
             const isElementVisible = await actor.answer(shippingElement.isVisible());
             
@@ -66,7 +66,7 @@ export class ReviewOrderSummary {
      */
     public static readonly totalVisible = () =>
         Question.about(`whether order total is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const totalElement = PageElement.located(By.css(PaymentPage.orderTotal));
+            const totalElement = PageElement.located(By.xpath(PaymentPage.orderTotal));
             await actor.answer(Wait.until(totalElement, isVisible()));
             const isElementVisible = await actor.answer(totalElement.isVisible());
             
@@ -84,10 +84,10 @@ export class ReviewOrderSummary {
      */
     public static readonly allSummaryDetails = () =>
         Question.about(`whether all order summary details are visible`, async (actor: AnswersQuestions & UsesAbilities) => {
-            const titleElement = PageElement.located(By.css(PaymentPage.orderSummaryTitle));
-            const subtotalElement = PageElement.located(By.css(PaymentPage.orderSubtotal));
-            const shippingElement = PageElement.located(By.css(PaymentPage.orderShipping));
-            const totalElement = PageElement.located(By.css(PaymentPage.orderTotal));
+            const titleElement = PageElement.located(By.xpath(PaymentPage.orderSummaryTitle));
+            const subtotalElement = PageElement.located(By.xpath(PaymentPage.orderSubtotal));
+            const shippingElement = PageElement.located(By.xpath(PaymentPage.orderShipping));
+            const totalElement = PageElement.located(By.xpath(PaymentPage.orderTotal));
 
             await actor.answer(Wait.until(titleElement, isVisible()));
             await actor.answer(Wait.until(subtotalElement, isVisible()));
