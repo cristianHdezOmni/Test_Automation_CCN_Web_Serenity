@@ -26,7 +26,7 @@ Scenario: Remove a product from the cart
   Then the cart should be empty
 
 
-@RegresionOK @checkoutDone
+@Regresion @checkoutDone
 Scenario: Validate payment method selection in the checkout process
   Given the user clicks the Add to Cart button
   And the user views the cart
