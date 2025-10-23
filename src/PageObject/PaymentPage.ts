@@ -75,7 +75,7 @@ export class PaymentPage {
     
 
    // --- Iframe de autenticación 3DS ---
-  static readonly threeDSFrame = '#azulpayment-3ds-frame';
+  static readonly threeDSFrame = '*//iframe[@id="azulpayment-3ds-frame"]';
   static readonly confirmYesCreditCartVisa = '//*[@id="yes"]';
 
 }

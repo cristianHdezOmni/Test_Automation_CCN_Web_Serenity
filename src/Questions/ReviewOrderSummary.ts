@@ -1,6 +1,7 @@
-import { Question, Wait, AnswersQuestions, UsesAbilities } from '@serenity-js/core';
+import { Question, Wait, AnswersQuestions, UsesAbilities, Duration } from '@serenity-js/core';
 import { PageElement, By, isVisible } from '@serenity-js/web';
 import { PaymentPage } from '../PageObject/PaymentPage';
+import { ScrollToElementCenter } from '../Interactions/ScrollToElementCenter';
 
 /**
  * ReviewOrderSummary
@@ -13,7 +14,16 @@ export class ReviewOrderSummary {
     public static readonly summaryTitleVisible = () =>
         Question.about(`whether order summary title is visible`, async (actor: AnswersQuestions & UsesAbilities) => {
             const titleElement = PageElement.located(By.xpath(PaymentPage.orderSummaryTitle));
+
+            // 🕒 Pausa inicial (6 segundos)
+            await Wait.for(Duration.ofSeconds(6)).performAs(actor);
+                        
+            // 🎯 Desplazar al formulario de envío
+            await ScrollToElementCenter.to(PaymentPage.orderSummaryTitle).performAs(actor);          
+
             await actor.answer(Wait.until(titleElement, isVisible()));
+            await Wait.for(Duration.ofSeconds(6)).performAs(actor);
+
             const isElementVisible = await actor.answer(titleElement.isVisible());
             
             console.log(`Order Summary Title visible: ${isElementVisible}`);
@@ -89,10 +99,18 @@ export class ReviewOrderSummary {
             const shippingElement = PageElement.located(By.xpath(PaymentPage.orderShipping));
             const totalElement = PageElement.located(By.xpath(PaymentPage.orderTotal));
 
+            // 🕒 Pausa inicial (6 segundos)
+            await Wait.for(Duration.ofSeconds(6)).performAs(actor);
+                        
+            // 🎯 Desplazar al formulario de envío
+            await ScrollToElementCenter.to(PaymentPage.orderSummaryTitle).performAs(actor);
+
             await actor.answer(Wait.until(titleElement, isVisible()));
             await actor.answer(Wait.until(subtotalElement, isVisible()));
             await actor.answer(Wait.until(shippingElement, isVisible()));
             await actor.answer(Wait.until(totalElement, isVisible()));
+
+            await Wait.for(Duration.ofSeconds(6)).performAs(actor);
 
             const titleVisible = await actor.answer(titleElement.isVisible());
             const subtotalVisible = await actor.answer(subtotalElement.isVisible());

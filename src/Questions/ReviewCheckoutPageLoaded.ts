@@ -1,29 +1,37 @@
-import { Question, Wait, AnswersQuestions, UsesAbilities } from '@serenity-js/core';
+import { Question, Wait, AnswersQuestions, UsesAbilities, Duration } from '@serenity-js/core';
 import { PageElement, By, isVisible } from '@serenity-js/web';
 import { CheckoutPage } from '../PageObject/CheckoutPage';
+import { ScrollToElementCenter } from '../Interactions/ScrollToElementCenter';
 
 export class ReviewCheckoutPageLoaded {
-    public static readonly status = () =>
+     public static readonly status = () =>
         Question.about(`whether checkout page shipping form is loaded`, async (actor: AnswersQuestions & UsesAbilities) => {
 
-             const shippingFormElement = PageElement.located(By.xpath(CheckoutPage.shippingForm));
-            
-            // Espera hasta que el elemento sea visible
-            await actor.answer(
-                Wait.until(shippingFormElement, isVisible())
+            // Localizador del formulario de envío (shipping form)
+            const shippingFormElement = PageElement.located(
+                By.xpath(CheckoutPage.shippingForm)
             );
-            
-            // Ahora pregunta si realmente es visible
-            const isElementVisible = await actor.answer(shippingFormElement.isVisible());
+
+            // 🕒 Pausa inicial (6 segundos)
+            await Wait.for(Duration.ofSeconds(6)).performAs(actor);
+
+            // 🎯 Desplazar al formulario de envío
+            await ScrollToElementCenter.to(CheckoutPage.shippingForm).performAs(actor);
+
+            await Wait.until(shippingFormElement, isVisible()).performAs(actor); 
+
+            // 🕒 Pequeña pausa adicional después del visible
+            await Wait.for(Duration.ofSeconds(15)).performAs(actor);
+
+            // 🔍 Verificar visibilidad real
+            const isElementVisible = await shippingFormElement.isVisible().answeredBy(actor);
             console.log(`Shipping Form visible: ${isElementVisible}`);
-            
+
             if (!isElementVisible) {
-                throw new Error('Checkout page shipping form is not visible');
+                throw new Error('❌ Checkout page shipping form is not visible or not rendered yet');
             }
-            
+
             return isElementVisible;
-            
-           
         });
 
     public static readonly paymentSectionVisible = () =>
@@ -56,3 +64,6 @@ export class ReviewCheckoutPageLoaded {
             return isElementVisible;
         });
 }
+
+
+

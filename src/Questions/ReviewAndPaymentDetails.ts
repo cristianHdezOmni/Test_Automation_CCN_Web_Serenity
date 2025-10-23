@@ -1,6 +1,7 @@
-import { Question, Wait, AnswersQuestions, UsesAbilities } from '@serenity-js/core';
+import { Question, Wait, AnswersQuestions, UsesAbilities, Duration } from '@serenity-js/core';
 import { PageElement, By, isVisible } from '@serenity-js/web';
 import { PaymentPage } from '../PageObject/PaymentPage';
+import { ScrollToElementCenter } from '../Interactions/ScrollToElementCenter';
 
 export class ReviewAndPaymentDetails {
     public static readonly hasBillingAddress = (expectedName: string, expectedPhone: string, expectedRegion: string, expectedCountry: string) =>
@@ -51,8 +52,16 @@ export class ReviewAndPaymentDetails {
             const dayElement = PageElement.located(By.xpath(PaymentPage.deliveryDay));
             const timeElement = PageElement.located(By.xpath(PaymentPage.deliveryTime));
 
+            // 🕒 Pausa inicial (6 segundos)
+            await Wait.for(Duration.ofSeconds(6)).performAs(actor);
+            
+            // 🎯 Desplazar al formulario de envío
+            await ScrollToElementCenter.to(PaymentPage.deliveryDay).performAs(actor);
+
             await actor.answer(Wait.until(dayElement, isVisible()));
             await actor.answer(Wait.until(timeElement, isVisible()));
+
+            await Wait.for(Duration.ofSeconds(8)).performAs(actor);
 
             const dayVisible = await actor.answer(dayElement.isVisible());
             const timeVisible = await actor.answer(timeElement.isVisible());

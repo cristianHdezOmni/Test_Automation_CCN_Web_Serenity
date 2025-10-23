@@ -7,11 +7,10 @@ Feature: Checkout Process
   Background:
     Given the user opens the login page
     And the user logs in with username "omnitestqaevidencias@gmail.com" and password "secret_sauce_Omni"
-    And the user has added a product to the cart
-    
+    And the user has added a product to the cart  
 
   
-@RegresionOK @checkoutIII
+@Regresion @checkoutDone
 Scenario: Validate delivery information in the Billing Address section
   Given the user clicks the Add to Cart button
   And the user views the cart
@@ -20,7 +19,7 @@ Scenario: Validate delivery information in the Billing Address section
   And the user fills in the delivery information form with valid data
   Then the delivery information should be correctly displayed in the Billing Address section of the checkout page
 
-@RegresionOK @checkoutIII
+@Regresion @checkoutDone
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty
@@ -41,7 +40,7 @@ Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty   
 
-@RegresionOK @checkoutI
+@Regresion @checkouDone
 Scenario: Verify order summary before placing order
   Given the user clicks the Add to Cart button
   And the user views the cart
@@ -50,13 +49,13 @@ Scenario: Verify order summary before placing order
   And the user fills in the delivery information form with valid data  
   Then the order summary should display the total amount
 
-@RegresionOK @checkoutI
+@Regresion @checkoutDone
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty
 
 
-@RegresionOK @checkoutIII
+@Regresion @checkoutDone
 Scenario: Place the order successfully
   Given the user clicks the Add to Cart button
   And the user views the cart
@@ -72,7 +71,7 @@ Scenario: Place the order successfully
   And the order number should be generated
 
 
-@RegresionOK @checkoutI
+@Regresion @checkoutDone
 Scenario: Validate required delivery time in the Delivery Information section
   Given the user clicks the Add to Cart button
   And the user views the cart
@@ -80,32 +79,34 @@ Scenario: Validate required delivery time in the Delivery Information section
   And the user clicks the continue button
   Then the message delivery time is mandatory "La hora de entrega es obligatorio" should be displayed
 
-@RegresionOK @checkoutI
+@Regresion @checkoutDone
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty
 
-@RegresionOK @checkoutI
+@Regresion @checkoutDone
 Scenario: Validate required fiscal receipt option
   Given the user clicks the Add to Cart button
   And the user views the cart
-  When the user clicks the Proceed to Checkout button from the cart    
+  When the user clicks the Proceed to Checkout button from the cart   
+  And the user will pick up the order 
   And the user fills in the delivery information form with valid data 
   And the user clicks the Proceed to Payment button
   Then validate that the message "Este es un campo obligatorio." is displayed in the fiscal receipt field
 
 
-@RegresionOK @checkoutI
+@Regresion @checkoutDone
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty
 
 
-@RegresionOK @checkout
+@RegresionOK @checkoutIII
 Scenario: Validate card payment process with insufficient funds (DECLINED)
   Given the user clicks the Add to Cart button
   And the user views the cart
   When the user clicks the Proceed to Checkout button from the cart
+  And the user will pick up the order
   And the user fills in the delivery information form with valid data
   And the user selects a payment method
   And the user selects Credit Card as the payment method without Balance
@@ -114,7 +115,7 @@ Scenario: Validate card payment process with insufficient funds (DECLINED)
   #And the user clicks in yes on the Credit Card
   Then the payment should be declined with the message "FOUND - DECLINADA"
 
-@RegresionOK @checkout
+@RegresionOK @checkoutDone
 Scenario: Remove a product from the cart
   When the user clicks the Remove from Cart button
   Then the cart should be empty
